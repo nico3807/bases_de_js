@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD - Prise en main de Visual Studio Code</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+      <h1>🛠️ Prise en main de VS Code</h1>
+      <p></header>
+        Cette partie a pour objectif de vous familiariser avec
+        <strong>Visual Studio Code (VS Code)</strong>, l'outil que nous
+        utiliserons tout au long de votre formation en développement web.
+      </p>
+
+      <hr />
+
+      <section id="installation">
+        <h2>1. Installation et Découverte</h2>
+        <p>
+          Nous utiliserons l'outil <strong>Visual Studio Code</strong> qui est
+          disponible gratuitement pour tous les systèmes d'exploitation (<strong
+            >Windows, Linux et macOS</strong
+          >).
+        </p>
+        <p>
+          <strong>Visual Studio Code</strong> est un éditeur de code extensible
+          développé par Microsoft pour Windows, Linux et macOS.
+        </p>
+        <p>Ses fonctionnalités incluent:</p>
+        <ul>
+          <li>La prise en charge du <strong>débogage</strong></li>
+          <li>La mise en évidence de la <strong>syntaxe</strong></li>
+          <li>La <strong>complétion intelligente du code</strong></li>
+          <li>Les <strong>snippets</strong></li>
+          <li>La <strong>refactorisation</strong> du code</li>
+          <li><strong>Git</strong> intégré</li>
+        </ul>
+        <p>
+          Les utilisateurs peuvent également modifier le thème, les raccourcis
+          clavier, les préférences et installer des
+          <strong>extensions</strong> qui ajoutent des fonctionnalités
+          supplémentaires.
+        </p>
+
+        <h3>1.1 Téléchargement et Lancement</h3>
+        <p>
+          Commencez par <strong>télécharger</strong> et
+          <strong>installer</strong> cet outil depuis le site officiel :
+          <a href="https://code.visualstudio.com/" target="_blank"
+            >https://code.visualstudio.com/</a
+          >.
+        </p>
+
+        <figure class="figure">
+          <img
+            src="image1.png"
+            alt="Page de téléchargement de Visual Studio Code"
+          />
+          <figcaption>
+            Figure 1 - Page de téléchargement de Visual Studio Code
+          </figcaption>
+        </figure>
+
+        <p>
+          Une fois installé, <strong>lancez VS Code</strong>. La fenêtre
+          principale suivante devrait apparaître (elle peut varier en fonction
+          de vos réglages) :
+        </p>
+
+        <figure class="figure">
+          <img src="image2.png" alt="Fenêtre Principale VS Code" />
+          <figcaption>Figure 2 - Fenêtre Principale VS Code</figcaption>
+        </figure>
+      </section>
+
+      <hr />
+
+      <section id="extensions">
+        <h2>2. Extensions pour Visual Studio Code</h2>
+        <p>
+          Il existe de très nombreuses extensions pour Visual Studio Code
+          permettant d'améliorer significativement les fonctionnalités de
+          l'outil et ainsi de le <strong>personnaliser</strong>.
+        </p>
+
+        <h3>2.1 Installation des Extensions de Base</h3>
+        <p>
+          Sur la barre des outils de gauche, repérez et cliquez sur l'icône
+          <strong>Extensions</strong>:
+        </p>
+
+        <figure class="figure">
+          <img
+            src="image5.png"
+            alt="Icône Extensions"
+            style="max-width: 150px"
+          />
+          <figcaption>Figure 3 - L'icône extensions</figcaption>
+        </figure>
+
+        <p>
+          Vous devez rechercher puis installer les extensions suivantes qui
+          faciliteront votre travail:
+        </p>
+
+        <ul class="extension-list">
+          <li>
+            <strong>Live Server</strong> : Lance un serveur web local pour voir
+            les modifications en temps réel. Avec cette extension, votre
+            ordinateur hébergera à la fois un serveur web et le navigateur
+            client sur le même poste.
+          </li>
+          <li>
+            <strong>Prettier</strong> : Formate automatiquement le code pour un
+            style cohérent.
+          </li>
+          <li>
+            <strong>Prettify JSON</strong> : Organise et rend le JSON plus
+            lisible.
+          </li>
+          <li>
+            <strong>Bracket Pair Colorize</strong> : Colore les paires de
+            parenthèses pour une meilleure lisibilité.
+          </li>
+          <li>
+            <strong>French - Code Spell Checker</strong> : Corrige les fautes
+            d'orthographe en français dans le code.
+          </li>
+          <li>
+            <strong>French Language Pack for Visual Studio Code</strong> :
+            Traduit l'interface en français.
+          </li>
+          <li>
+            <strong>Lorem ipsum</strong> : Génère du texte factice pour les
+            tests (souvent utilisé pour des maquettes).
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="raccourcis">
+        <h2>3. Personnalisation des Raccourcis Clavier</h2>
+        <p>
+          Vous avez la possibilité de personnaliser les raccourcis clavier
+          associés aux extensions.
+        </p>
+
+        <p class="note">
+          <strong>Exemple d'activité :</strong> Pour associer un raccourci
+          clavier permettant d'ajouter un paragraphe de texte
+          <strong>Lorem ipsum</strong>, suivez les étapes suivantes :
+        </p>
+
+        <ol>
+          <li>
+            Cliquez sur :
+            <ul>
+              <li>
+                <strong>Fichier -> Préférences -> Raccourcis clavier</strong>
+                (pour Windows),
+                <strong>OU</strong>
+              </li>
+              <li>
+                <strong>Code -> Réglages -> Raccourcis clavier</strong> (pour
+                Mac Os X).
+              </li>
+            </ul>
+          </li>
+          <li>Tapez 'lorem' dans la barre de recherche.</li>
+          <li>
+            Choisissez le raccourci clavier pour l'action
+            <strong>Lorem Ipsum: Insert a paragraph</strong>.
+          </li>
+        </ol>
+
+        <figure class="figure">
+          <img
+            src="image6.png"
+            alt="Personnalisation des raccourcis clavier de Visual Studio Code"
+          />
+          <figcaption>
+            Figure 4 - Personnaliser les raccourcis clavier de Visual Studio
+            Code
+          </figcaption>
+        </figure>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="index.html">← Retour au Menu du TD</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page2.html">→ Partie suivante</a>
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

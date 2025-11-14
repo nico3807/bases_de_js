@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP - Structures conditionnelles : Choix de parcours MMI</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>
+          🧭 Exercice : Menu d’orientation du BUT MMI (Structure
+          <code>switch</code>)
+        </h1>
+      </header>
+
+      <hr />
+
+      <section id="contexte">
+        <h2>1. Contexte : Les Parcours du BUT MMI</h2>
+        <p>
+          Cet exercice pratique vise à mettre en œuvre la structure
+          conditionnelle <strong><code>switch</code></strong> pour orienter un
+          utilisateur vers les différents parcours de notre département MMI.
+        </p>
+
+        <p>Les choix possibles pour l'utilisateur sont :</p>
+        <ul class="parcours-list">
+          <li><strong>1 :</strong> Création Numérique</li>
+          <li>
+            <strong>2 :</strong> Développement Web et dispositifs interactifs
+          </li>
+          <li>
+            <strong>3 :</strong> Stratégie de communication numérique et design
+            d’expérience
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="taches-contraintes">
+        <h2>2. Tâches de Programmation</h2>
+        <div class="exercice">
+          <h3>Objectif : Créer une interface d'aide à l'orientation</h3>
+          <ol>
+            <li>
+              Demander à l’utilisateur de
+              <strong>choisir un parcours</strong> (de 1 à 3) via la fonction
+              <strong><code>prompt()</code></strong
+              >.
+            </li>
+            <li>
+              Utilisez un <strong><code>switch</code></strong> sur la valeur
+              saisie pour afficher (avec <strong><code>alert()</code></strong
+              >) une description courte du pôle choisi pour les choix 1, 2 et 3.
+            </li>
+            <li>
+              Si la saisie est invalide (hors 1, 2 ou 3), afficher un message
+              d'erreur via la commande <strong><code>default</code></strong
+              >.
+            </li>
+          </ol>
+
+          <p><strong>Contraintes techniques :</strong></p>
+          <ul class="contraintes-list">
+            <li>
+              ✔️ Utiliser la fonction
+              <strong><code>parseInt()</code></strong> pour convertir la saisie
+              (qui est une chaîne de caractères) en nombre.
+            </li>
+            <li>
+              ✔️ Mettre un <strong><code>break</code></strong> à la fin de
+              chaque <strong><code>case</code></strong
+              >.
+            </li>
+            <li>
+              ✔️ Ajouter un <strong><code>default</code></strong> pour gérer
+              toutes les saisies hors de la plage 1-3 (incluant les nombres
+              négatifs ou 'NaN' si l'utilisateur annule ou entre du texte).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="exemples">
+        <h2>3. Exemples d'exécution</h2>
+
+        <p>
+          Voici le comportement attendu de l'application JavaScript (les boîtes
+          de dialogue) :
+        </p>
+
+        <div style="display: flex; gap: 20px; justify-content: center">
+          <figure class="figure" style="max-width: 75%">
+            <img
+              src="image19.png"
+              alt="Exemple d'invite pour le choix de parcours"
+            />
+            <figcaption>
+              Étape 1 : Demande de saisie via <code>prompt()</code>.
+            </figcaption>
+          </figure>
+          <figure class="figure" style="max-width: 75%">
+            <img
+              src="image20.png"
+              alt="Exemple de résultat après un choix valide (2)"
+            />
+            <figcaption>
+              Résultat : Description pour le parcours 2 (Développement Web).
+            </figcaption>
+          </figure>
+        </div>
+
+        <figure class="figure" style="max-width: 75%">
+          <img
+            src="image21.png"
+            alt="Exemple de saisie invalide (-7)"
+            style="width: 65%; height: auto"
+          />
+          <figcaption>
+            Gestion d'une saisie invalide (nombre négatif) gérée par la clause
+            <code>default</code>.
+          </figcaption>
+        </figure>
+      </section>
+
+      <hr />
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page4_1.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page6.html">→ Partie suivante</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

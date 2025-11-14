@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD - Les Variables en JavaScript</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>💾 Les Variables en JavaScript</h1>
+        <p>Espace de stockage, Déclaration et Affectation</p>
+      </header>
+
+      <hr />
+
+      <section id="definition-variable">
+        <h2>1. Qu'est-ce qu'une Variable ?</h2>
+        <p>
+          Pour faire simple, une <strong>variable</strong> est un <strong>espace de stockage</strong> sur
+          votre ordinateur qui permet d'enregistrer tout type de donnée
+          (chaîne de caractères, valeur numérique, structures plus complexes,
+          etc.).
+        </p>
+
+        <p>
+          En JavaScript (JS), une variable est déclarée sans spécifier de type de
+          contenu à l'avance, car JS est un langage <strong>typé dynamiquement</strong>.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="declaration-affectation">
+        <h2>2. Déclaration et Affectation d'une Variable</h2>
+
+        <h3>2.1 Déclaration</h3>
+        <ul>
+          <li>
+            La <strong>déclaration</strong> d'une variable sert à lui
+            <strong>réserver un espace de stockage</strong> en mémoire.
+          </li>
+          <li>
+            Pour la déclarer, on utilise les mots-clés
+            <strong><code>let</code></strong> (moderne) ou
+            <strong><code>var</code></strong> (ancien).
+          </li>
+          <li>
+            Exemple de déclaration simple:
+            <div class="code-example">
+              <pre><code>let maVariable;</code></pre>
+            </div>
+          </li>
+        </ul>
+
+        <h3>2.2 Affectation</h3>
+        <ul>
+          <li>
+            L'<strong>affectation</strong> est l'action de <strong>donner une valeur</strong> à la variable.
+            Elle se fait avec le signe
+            <strong><code>=</code></strong>.
+          </li>
+          <li>
+            Exemples d'affectation :
+            <div class="code-example">
+              <pre><code>maVariable = 2; // Après la déclaration
+// Ou en une seule ligne :
+let maVariable = 2; // Déclaration et affectation simultanées</code></pre>
+            </div>
+          </li>
+          <li>
+            Il est possible de déclarer plusieurs variables à la fois en les
+            séparant par des virgules:
+            <div class="code-example">
+              <pre><code>let score, vies, niveau1;</code></pre>
+            </div>
+          </li>
+        </ul>
+
+        <h3>2.3 Règles de nommage importantes</h3>
+          <p class="note">
+          <strong>Règles à retenir :</strong> 
+          <ul>
+            <li>Le nom doit contenir uniquement des caractères
+              <strong>alphanumériques</strong> (A-Z, 0-9), l'<strong>underscore</strong> (<code>_</code>) et le
+              <strong>dollar</strong> (<code>$</code>).</li>
+            <li>Il <strong>ne peut pas commencer</strong> par un chiffre.</li>
+            <li>Il <strong>ne peut pas</strong> être un mot-clé réservé par JavaScript.</li>
+            <li>JavaScript est <strong>sensible à la casse</strong> (<code>maVariable</code> est
+              différent de <code>mavariable</code>).</li>
+          </ul>
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="types-de-variables">
+        <h2>3. Les Types de Variables (Typage Dynamique)</h2>
+        <p>
+          JavaScript est un langage <strong>typé dynamiquement</strong> (comme Python).
+          Cela signifie que le type de donnée est vérifié pendant l'exécution,
+          et une variable peut contenir n'importe quel type de donnée.
+        </p>
+
+        <h3>3.1 Type Numérique (Number) 🔢</h3>
+        <p>
+          Représente <strong>tout nombre</strong> : entiers, négatifs, scientifiques,
+          décimaux, etc.
+        </p>
+        <div class="code-example">
+          <pre><code>let number = 5; // Un nombre entier</code></pre>
+        </div>
+
+        <h3>3.2 Type Texte (String) 💬</h3>
+        <p>
+          Représente une <strong>chaîne de caractères</strong>. L'affectation peut se faire
+          avec des guillemets doubles (<code>"..."</code>) ou des apostrophes
+          droites (<code>'...'</code>).
+        </p>
+        <div class="code-example">
+          <pre><code>let text1 = "Mon premier texte";
+let text2 = 'Mon deuxième texte';</code></pre>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="calculs-et-concatenation">
+        <h2>4. Les Calculs et la Concaténation</h2>
+
+        <h3>4.1 Réalisation de Calculs</h3>
+        <p>
+          Faire des calculs en programmation est simple. On peut utiliser
+          des valeurs directes ou des variables contenant des nombres.
+        </p>
+        <div class="code-example">
+          <pre><code>let nombre1 = 3, nombre2 = 2;
+let resultat = nombre1 * nombre2; // 'resultat' vaut 6</code></pre>
+        </div>
+
+        <h3>4.2 Simplification des calculs (Incrémentation)</h3>
+        <p>
+          Pour l'<strong>incrémentation</strong> (ajouter un nombre à la valeur de la
+          variable), une forme simplifiée existe pour éviter la répétition.
+        </p>
+        <table class="table-50">
+            <thead>
+                <tr>
+                    <th>Forme Longue (rébarbative)</th>
+                    <th>Forme Courte (simplifiée)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-center"><code>nombre = nombre + 5;</code></td>
+                    <td class="td-center"><code>nombre += 5;</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+
+        <h3>4.3 La Concaténation avec le signe +</h3>
+          <p>
+          Le signe <strong><code>+</code></strong> est utilisé non seulement pour l'addition
+          numérique, mais aussi pour l'ajout de texte, appelé
+          <strong>concaténation</strong>.
+        </p>
+        <div class="code-example">
+          <pre><code>let chaine1 = "MMI1 - ";
+let chaine2 = "Béziers";
+let resultat = chaine1 + chaine2; // 'resultat' contient "MMI1 - Béziers"</code></pre>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page4.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page4_1.html">→ Partie Suivante (Intro JS)</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

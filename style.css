@@ -1,0 +1,223 @@
+.back-to-menu {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+.back-to-menu a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bleu standard */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.back-to-menu a:hover {
+  background-color: #0056b3; /* Bleu MMI pour le survol */
+}
+
+.menu-buttons {
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre les boutons horizontalement */
+  gap: 20px; /* Espace entre les deux boutons */
+  margin-top: 20px; /* Optionnel : espace au-dessus */
+}
+
+/* Styles de base pour la lisibilité */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+page1,
+page2,
+page3 {
+  color: #0056b3; /* Bleu MMI */
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+page1 {
+  text-align: center;
+}
+.figure {
+  text-align: center;
+  margin: 20px 0;
+}
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.figure figcaption {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+.extension-list {
+  list-style: none;
+  padding-left: 0;
+}
+.extension-list li {
+  background-color: #e9ecef;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 5px solid #007bff; /* Bleu VScode */
+  border-radius: 4px;
+}
+.extension-list strong {
+  color: #007bff;
+}
+.note {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #ffeeba;
+  margin-top: 15px;
+}
+/* Styles Généraux et Charte MMI 
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; 
+  color: #343a40;
+}*/
+.header {
+  background-color: #0056b3; /* Bleu MMI principal */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+.header p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Styles du Menu de Navigation (Moderne et Élégant) */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.nav-menu li {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+.nav-menu li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+.nav-menu a {
+  text-decoration: none;
+  color: #343a40;
+  display: block;
+  padding: 20px;
+  font-weight: bold;
+  border-left: 5px solid #007bff; /* Barre VScode / Accentuation */
+  transition: background-color 0.2s;
+}
+.nav-menu a:hover {
+  background-color: #f0f8ff; /* Bleu très léger au survol */
+}
+
+/* Titres dans le menu */
+.menu-title {
+  font-size: 1.1em;
+  margin: 0;
+  color: #007bff;
+}
+.menu-subtitle {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+table {
+  width: 100%; /* Laisser le contrôle de la largeur aux balises HTML */
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
+}
+/* Style pour aligner le tableau à 50% de largeur */
+.table-50 {
+  width: 50%;
+  margin-left: auto; /* Centre le tableau */
+  margin-right: auto; /* Centre le tableau */
+}
+/* Style pour aligner les deux tableaux si nécessaire */
+.table-group {
+  display: flex; /* Peut être utile pour un alignement côte à côte, mais ici pour un alignement centré des blocs */
+  flex-direction: column;
+  align-items: center; /* Centre les éléments enfants (les tableaux) */
+}
+.td-center {
+  text-align: center !important;
+  /* !important est utilisé ici pour s'assurer que cette règle surcharge le "text-align: left" général */
+}
+
+/* Style global pour les balises <code> : gras, texte blanc, fond noir, police 14px */
+code {
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #000000;
+  font-size: 14px;
+  font-family: monospace;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Assurer que les <code> à l'intérieur de <pre> conservent leur mise en forme mais adoptent la couleur/fond */
+pre code {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}

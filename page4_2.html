@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD - Structures Conditionnelles et Boucles</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🚦 Les boucles de répétition</h1>
+      </header>
+      <hr />
+
+      <section id="boucles">
+        <h2>1. Les Boucles (Répétition d'instructions)</h2>
+        <p>
+          Une boucle permet de répéter un bloc de code tant qu'une
+          <strong>condition</strong>
+          reste vraie (<code>true</code>). La boucle s'arrête dès que la
+          condition devient fausse (<code>false</code>).
+        </p>
+
+        <h3>2.1 La boucle <code>while</code></h3>
+        <p>
+          La boucle <code>while</code> (tant que) exécute le code
+          <strong>tant que</strong>
+          la condition est remplie. Si la condition est fausse dès le départ, le
+          code n'est jamais exécuté.
+        </p>
+        <div class="code-example">
+          <pre><code>let nombre = 1;
+while (nombre < 10) { // Condition: Tant que nombre est strictement inférieur à 10
+    nombre++; // Incrémentation
+}
+alert(nombre); // Affiche : « 10 »
+</code></pre>
+        </div>
+        <p>
+          On peut utiliser l'instruction
+          <strong><code>break</code></strong> pour arrêter une boucle en cours
+          de fonctionnement.
+        </p>
+
+        <h3>2.2 La boucle <code>do while</code></h3>
+        <p>
+          La boucle <strong><code>do while</code></strong> ressemble à
+          <code>while</code>, mais la boucle est toujours exécutée
+          <strong>au moins une fois</strong>. La condition est testée *après* le
+          premier passage.
+        </p>
+        <div class="code-example">
+          <pre><code>do {
+    instruction_1;
+    instruction_2;
+}
+while (condition);
+</code></pre>
+        </div>
+
+     <section id="boucle-for">
+        <h2>3. Les Boucles : Répétition avec `for`</h2>
+        <p>
+          Les **boucles** permettent d'exécuter un même bloc de code plusieurs
+          fois de suite, souvent pour automatiser une tâche ou parcourir une
+          liste de données.
+        </p>
+
+        <p>
+          La boucle <strong><code>for</code></strong> est la plus courante pour
+          la répétition d'un code un **nombre de fois déterminé**.
+        </p>
+        <p>
+          Elle prend trois paramètres entre parenthèses, séparés par des
+          points-virgules :
+        </p>
+
+        <div class="table-group">
+          <table style="width: 100%">
+            <thead>
+              <tr>
+                <th>Paramètre</th>
+                <th>Rôle</th>
+                <th>Exemple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-center">1. Initialisation</td>
+                <td>
+                  Déclare et initialise le **compteur** (ex:
+                  <code>i = 0</code>).
+                </td>
+                <td class="td-center"><code>let i = 0</code></td>
+              </tr>
+              <tr>
+                <td class="td-center">2. Condition</td>
+                <td>
+                  Condition à vérifier. Tant qu'elle est vraie, la boucle
+                  continue.
+                </td>
+                <td class="td-center"><code>i < 5</code></td>
+              </tr>
+              <tr>
+                <td class="td-center">3. Incrémentation</td>
+                <td>
+                  Action à effectuer à la fin de chaque tour (souvent :
+                  augmenter le compteur).
+                </td>
+                <td class="td-center"><code>i++</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          L'opérateur <strong><code>i++</code></strong> est une forme simplifiée
+          pour dire <code>i = i + 1</code> (incrémenter de 1).
+        </p>
+
+        <div class="code-example">
+          <pre><code>// Affichera "Tour numéro X" cinq fois (pour i allant de 0 à 4)
+for (let i = 0; i < 5; i++) {
+    console.log("Tour numéro " + i);
+}</code></pre>
+        </div>
+      </section>
+
+      <hr />
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page4_0.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page5.html">→ Partie Suivante</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD - Bases du langage JavaScript</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>💡 Variables, Calculs et Interaction</h1>
+      </header>
+
+      <hr />
+
+      <section id="presentation-js">
+        <h2>1. Présentation et Instructions</h2>
+        <p>
+          Le <strong>JavaScript</strong> (souvent abrégé <strong>JS</strong>)
+          est un langage de programmation de scripts principalement utilisé dans
+          les pages web interactives, mais aussi côté serveur. C’est un langage
+          <strong>orienté objet à prototype</strong>.
+        </p>
+
+        <h3>1.1 Instructions et fonction <code>alert()</code></h3>
+        <p>
+          Le code JavaScript est constitué d'une suite d'<strong
+            >instructions</strong
+          >
+          (commandes ou ordres) séparées par un <strong>point-virgule</strong> à
+          la fin de chaque instruction.
+        </p>
+        <p>
+          L'instruction simple 'alert()' est une <strong>fonction</strong> qui
+          affiche une boîte de dialogue contenant un message.
+        </p>
+
+        <div class="code-example">
+          <pre><code>&lt;script type="text/javascript"&gt;
+    alert("MMI1 - C'est mon 1er TD sur le JavaScript !");
+&lt;/script&gt;
+</code></pre>
+        </div>
+
+        <figure class="figure">
+          <img
+            src="image9.png"
+            alt="Boîte de dialogue alert affichée dans le navigateur"
+          />
+          <figcaption>
+            Exemple d'exécution de la fonction <code>alert()</code>.
+          </figcaption>
+        </figure>
+
+        <p class="note">
+          <strong>Rappel :</strong> Il est fortement recommandé d'intégrer le
+          JavaScript dans un fichier externe (extension '.js') plutôt que
+          directement dans le HTML.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="variables-types">
+        <h2>2. Les Variables et les Types</h2>
+        <p>
+          Une <strong>variable</strong> est un espace de stockage en mémoire
+          pour enregistrer tout type de donnée (chaîne de caractères, valeur
+          numérique, etc.).
+        </p>
+
+        <h3>2.1 Déclaration et affectation</h3>
+        <ul>
+          <li>
+            Pour déclarer une variable, on utilise le mot-clé
+            <strong><code>let</code></strong> (ou 'var' pour une ancienne
+            syntaxe).
+          </li>
+          <li>
+            Le signe <strong>'='</strong> est utilisé pour affecter une valeur à
+            la variable (on parle d'<strong>affectation</strong>).
+          </li>
+          <li>
+            <strong>Attention :</strong> Le nom d'une variable est sensible à la
+            <strong>casse</strong>
+            (différence majuscules/minuscules). Le nom ne peut pas commencer par
+            un chiffre et ne peut pas être un mot-clé JS.
+          </li>
+        </ul>
+
+        <div class="code-example">
+          <pre><code>let maVariable; // Déclaration
+maVariable = 2; // Affectation
+// On peut simplifier par :
+let maVariable = 2;
+</code></pre>
+        </div>
+
+        <h3>2.2 Types dynamiques</h3>
+        <p>
+          JavaScript est un langage <strong>typé dynamiquement</strong>. Cela
+          signifie qu'une variable déclarée peut contenir n'importe quel type de
+          donnée sans distinction de mot-clé.
+        </p>
+        <ul>
+          <li>
+            <strong>Type numérique :</strong> <code>let number = 5;</code>
+          </li>
+          <li>
+            <strong>Type texte (String) :</strong> Peut être assigné avec des
+            guillemets ou des apostrophes.
+            <div
+              class="code-example"
+              style="background-color: #2c3e50; color: #ecf0f1"
+            >
+              <code>let text1 = "Mon premier texte";</code><br />
+              <code>let text2 = 'Mon deuxième texte';</code>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="calculs-concat">
+        <h2>3. Les Calculs et la Concaténation</h2>
+        <p>
+          Les calculs s'effectuent de manière simple. L'opérateur
+          <strong>'+'</strong> est utilisé pour l'addition des nombres et pour
+          la <strong>concaténation</strong>
+          (ajout de texte).
+        </p>
+
+        <h3>3.1 Simplification des calculs (Incrémentation)</h3>
+        <p>
+          Pour l'incrémentation (ajouter un nombre à la valeur de la variable),
+          on peut utiliser la forme simplifiée :
+        </p>
+        <div class="code-example">
+          <pre><code>let nombre = 3;
+nombre = nombre + 5; // Forme longue, nombre vaut 8
+// Équivalent à :
+let nombre = 3;
+nombre += 5; // Forme courte, nombre vaut 8
+</code></pre>
+        </div>
+
+        <h3>3.2 Concaténation (Ajout de texte)</h3>
+        <div class="code-example">
+          <pre><code>let chaine1 = "MMI1 - ";
+let chaine2 = "Béziers";
+let resultat = chaine1 + chaine2; // résultat contient "MMI1 - Béziers"
+</code></pre>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="interaction-conditions">
+        <h2>4. Interaction avec l'utilisateur et Conditions</h2>
+
+        <h3>4.1 Fonction <code>prompt()</code> et conversion</h3>
+        <p>
+          La fonction <strong><code>prompt()</code></strong> affiche une boîte
+          de dialogue et renvoie ce que l'utilisateur a écrit.
+        </p>
+        <p class="note">
+          <strong>ATTENTION :</strong> <code>prompt()</code> renvoie toujours
+          une <strong>chaîne de caractères</strong> (texte), même si
+          l'utilisateur entre un chiffre. Pour faire des calculs, il faut
+          convertir cette chaîne en nombre avec la fonction
+          <strong><code>parseInt()</code></strong
+          >.
+        </p>
+
+        <div class="code-example">
+          <pre><code>let texte = '1337', nombre;
+      nombre = parseInt(texte); // nombre vaut le nombre 1337
+      alert(typeof nombre); // typeof indique le type de la variable
+      </code></pre>
+        </div>
+      </section>
+      <hr />
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page3.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page4_0.html">→ Partie suivante</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

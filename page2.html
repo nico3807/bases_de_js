@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partie 2 : Premier Projet Web et Intégration JS</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>⚙️ Premières pages JavaScript avec VS Code</h1>
+      </header>
+
+      <hr />
+
+      <section id="creation-projet">
+        <h2>1. Création d'un projet, premier site</h2>
+        <p>
+          Sur VS Code, chaque site ou projet de développement est stocké dans un
+          dossier.
+        </p>
+        <p>
+          Pour créer votre premier site avec Visual Studio Code, réalisez les
+          actions suivantes :
+        </p>
+        <ol class="step-list">
+          <li>
+            Créer sur votre ordinateur un dossier qui contiendra votre site.
+          </li>
+          <li>Ouvrir ce dossier avec Visual Studio Code.</li>
+          <li>
+            Créer (via Visual Studio Code) un nouveau fichier nommé
+            <code>index.html</code>.
+          </li>
+          <li>
+            Dans ce fichier, tapez le caractère <code>!</code> puis la touche
+            <strong>Entrée</strong>. Vous obtiendrez une page web opérationnelle
+            sans contenu.
+          </li>
+          <li>
+            Réalisez un clic droit sur le fichier et choisissez
+            <strong>Open with Live Server</strong>. La page web doit s'ouvrir
+            dans le navigateur par défaut.
+          </li>
+          <li>
+            La page web est désormais mise à jour et synchronisée avec l'éditeur
+            de code.
+          </li>
+        </ol>
+
+        <p><strong>Modification du HTML</strong></p>
+        <p>Modifiez le fichier HTML pour y ajouter :</p>
+        <ul>
+          <li>une balise <code>&lt;h1&gt;</code> avec un titre,</li>
+          <li>
+            une division <code>&lt;DIV&gt;</code> contenant deux paragraphes de
+            textes <em>Lorem Ipsum</em>.
+          </li>
+        </ul>
+        <p>
+          Sauvegardez et observez immédiatement le résultat dans le navigateur.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="premier-script">
+        <h2>2. Premier script JavaScript</h2>
+        <p>Pour écrire du JavaScript, deux solutions sont possibles:</p>
+        <ul>
+          <li>
+            Écrire le code directement dans la page HTML entre une balise
+            <code>&lt;script&gt;</code> et une balise
+            <code>&lt;/script&gt;</code>.
+          </li>
+          <li>
+            Écrire le code dans un fichier dédié et l'intégrer dans la page HTML
+            avec la balise
+            <code>&lt;script src=URL&gt;&lt;/script&gt;</code>.
+          </li>
+        </ul>
+        <p class="note">
+          La seconde méthode est à privilégier car elle permet de bien séparer
+          les différentes parties d'un site web : HTML, CSS, JS, PHP, ...
+        </p>
+
+        <p><strong>Intégration du Script</strong></p>
+        <p>Complétez le projet existant:</p>
+        <ol class="step-list">
+          <li>
+            Ajoutez au projet un nouveau fichier nommé
+            <code>script.js</code>.
+          </li>
+          <li>
+            Ajoutez la balise suivante à la fin du fichier HTML, juste avant la
+            balise <code>&lt;/body&gt;</code>:
+            <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+          </li>
+        </ol>
+        <p>
+          Regardez s'il y a eu un effet sur la page web. Vous ne devriez
+          normalement observer aucun effet visible sur la page web.
+        </p>
+        <p>
+          Dans la suite, toutes les instructions JavaScript seront ajoutées dans
+          le fichier <code>script.js</code>.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="outils-dev">
+        <h2>3. Outils de développement du navigateur</h2>
+        <p>
+          Ouvrez les outils de développement du navigateur. En règle générale,
+          il suffit de réaliser un "clic droit" sur la page web et de choisir
+          "<strong>Examiner l'élément</strong>" ou "<strong>Inspecter</strong>".
+        </p>
+        <p style="font-size: 0.9em">
+          <em
+            >(Note : Les captures d'écran ci-dessous correspondent au navigateur
+            Google Chrome, mais les outils sont similaires sur Firefox, Edge,
+            etc.)</em
+          >
+        </p>
+
+        <figure class="figure">
+          <img
+            src="image7.png"
+            alt="Page web sur le navigateur avec les outils de développement actifs"
+          />
+          <figcaption>
+            Figure 4 - Page web sur le navigateur avec les outils de
+            développement actifs
+          </figcaption>
+        </figure>
+
+        <p>
+          Ces outils sont essentiels lors de la phase de création d'un site web.
+          Vous y retrouvez notamment:
+        </p>
+        <ul>
+          <li>le sélecteur d'élément HTML</li>
+          <li>
+            la <strong>console JavaScript</strong> (outil clé pour le débogage
+            de code JS)
+          </li>
+          <li>l'inspecteur de code HTML</li>
+          <li>le débogueur</li>
+          <li>l'outil de mesure des performances</li>
+          <li>l'analyseur de l'activité réseau</li>
+          <li>les éléments stockés (Local Storage, Cookies, etc.)</li>
+        </ul>
+
+        <p style="font-style: italic">
+          Vous pouvez installer différents plugins à votre navigateur pour vous
+          aider à développer des pages web conformes aux recommandations du
+          consortium W3C.
+        </p>
+      </section>
+
+      <hr />
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page1.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page3.html">→ Partie suivante</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

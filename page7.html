@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction DOM : Manipulation des propriétés CSS et Événements</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container"><header class="header">
+        <h1>⚙️ Interaction DOM : Manipulation des Propriétés CSS et Événements</h1></header>
+
+        <hr>
+
+        <section id="modification-css">
+            <h2>1. Modification des Propriétés CSS avec JavaScript</h2>
+            <p>La manière la plus simple et la plus utilisée pour modifier le CSS d'un élément HTML est l'utilisation de la propriété <strong><code>style</code></strong>.</p>
+
+            <h3>1.1 Accès à la propriété style</h3>
+            <p>Pour accéder à la propriété <code>style</code> d'un élément, on procède par chaînage :</p>
+            <div class="code-example">
+                <pre><code>// Accès à la propriété style du corps du document (body)
+document.body.style
+// On écrit ensuite le nom de la propriété CSS et le paramètre.
+document.body.style.color = 'blue'; // Modifie la couleur du texte en bleu
+</code></pre>
+            </div>
+            <p>Le sélecteur 'document.body' concerne tout ce qui est placé entre les balises "<body>" du code HTML.</p>
+
+            <h3>1.2 Modification du contenu HTML (innerHTML)</h3>
+            <p>Pour modifier le contenu d'un élément HTML (tel qu'un paragraphe ou un 'div'), on utilise la propriété <strong><code>innerHTML</code></strong>.</p>
+            
+            <figure class="figure">
+                <img src="image24.png" alt="Exemple de prompt demandant un chiffre" style="max-width: 700px;" />
+                <figcaption>Boîte de dialogue demandant à l'utilisateur de rentrer un chiffre.</figcaption>
+            </figure>
+            
+            <p>Si l'utilisateur saisit un chiffre, celui-ci peut être affiché dans un paragraphe:</p>
+            
+            <figure class="figure">
+                <img src="image25.png" alt="Exemple d'affichage du chiffre saisi dans un paragraphe" style="max-width: 500px;" />
+                <figcaption>Résultat : Le chiffre saisi est affiché dans un paragraphe.</figcaption>
+            </figure>
+            
+            <p>L'opération se fait en deux étapes : Sélection de l'élément puis Modification du contenu :</p>
+            <div class="code-example">
+                <pre><code>// 1. Sélection de l'élément HTML avec l'ID "MonId"
+// 2. Modification du contenu HTML par la valeur de la variable 'chiffre'
+document.getElementById("MonId").innerHTML = chiffre;
+</code></pre>
+            </div>
+            
+            <ul class="remarques-list">
+                <li><strong>Sélection :</strong> 'document.getElementById("MonId")' sélectionne l'élément HTML ayant l'attribut 'id' égal à "MonId".</li>
+                <li><strong>Contenu :</strong> '.innerHTML=chiffre' modifie le contenu HTML de cet élément sélectionné.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="recuperation-css">
+            <h2>2. Récupération des Propriétés CSS (<code>getComputedStyle()</code>)</h2>
+            <p>La propriété 'style' ne permet pas de récupérer les valeurs CSS définies dans les feuilles de style externes.</p>
+            <p>Pour pallier cette limitation, on utilise la fonction <strong><code>getComputedStyle()</code></strong>. Cette fonction permet de récupérer la valeur de <strong>n'importe quel style CSS</strong>, qu'il soit déclaré en ligne, dans une feuille de style ou même calculé automatiquement.</p>
+
+            <h3>Exemple d'utilisation</h3>
+            <div class="code-example">
+                <pre><code>&lt;style type="text/css"&gt;
+#text { color: red; }
+&lt;/style&gt;
+
+&lt;script&gt;
+var text = document.getElementById('text');
+var color = getComputedStyle(text, null).color;
+alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
+&lt;/script&gt;
+</code></pre>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="exercice-image">
+            <h2>3. Exercice Pratique : Redimensionnement Dynamique d'Image</h2>
+            <p>L'objectif est de contrôler les dimensions d'une image (ici le logo MMI) à l'aide de boutons.</p>
+            
+            <figure class="figure">
+                <img src="image26.png" alt="Logo MMI Béziers et boutons Agrandir/Réduire" style="max-width: 400px;" />
+                <figcaption>Logo MMI Béziers et interface des boutons.</figcaption>
+            </figure>
+
+            <h3>Structure HTML de base de l'image</h3>
+            <div class="code-example">
+                <pre><code>&lt;div align="center" id="cadre"&gt; 
+    &lt;img src="logo_MMI_Beziers.jpg" id ="image" width="400" height="400" alt=""/&gt; 
+&lt;/div&gt;
+</code></pre>
+            </div>
+            
+            <h3>Tâches à réaliser</h3>
+            <ol>
+                <li>Créer <strong>deux fonctions</strong> ('agrandir' et 'reduire') qui changeront la taille du logo de <strong>10%</strong> à chaque clic.</li>
+                <li><strong>Limiter la taille</strong> : implémenter une logique qui empêche l’image de devenir trop petite (minimum 50px) ou trop grande (maximum 1200px).</li>
+                <li><strong>Réinitialisation</strong> : ajouter un bouton "Réinitialiser" pour revenir à la taille d’origine (400x400).</li>
+            </ol>
+            
+            <p>Pour réaliser cela, il est conseillé de récupérer la largeur actuelle de l'image (en pixels) et d'ajouter/retirer la valeur correspondante (par exemple, 10% de 400px = 40px).</p>
+        </section>
+
+        <hr>
+        
+        <section id="bonus">
+            <h2>4. Pour aller plus loin... (Bonus)</h2>
+            <p>Permettre un redimensionnement via une <strong>barre de défilement (slider)</strong>.</p>
+            <ul>
+                <li>Ajouter un '<input type="range">' pour permettre un redimensionnement plus précis et interactif.</li>
+                <li>Ceci introduit la gestion de l'événement 'input' HTML.</li>
+                <li>Bonus : afficher la valeur d’agrandissement ou de réduction en %.</li>
+            </ul>
+        </section>
+
+        <hr>
+    <div class="menu-buttons">
+        
+        <div class="back-to-menu">
+          <a href="page6.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="index.html">← Retour au Menu du TD</a>
+        </div>
+        
+        
+      </div>
+        <footer>
+      <p style="text-align: center; font-size: 0.9em; color: #666">
+        © 2025 — BUT MMI Béziers - MAURIN N.<br />
+        R1.12 Développement Web
+      </p>
+    </footer>
+    </div>
+</body>
+</html>

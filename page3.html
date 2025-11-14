@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD - Rappel sur l'intégration du CSS</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🎨 Rappel sur le Langage CSS</h1>
+      </header>
+
+      <hr />
+
+      <section id="definition-css">
+        <h2>1. Définition et Fonction du CSS</h2>
+        <p>
+          Le <strong>CSS</strong> (Cascading Style Sheets, ou Feuilles de styles
+          en cascade) sert à mettre en forme des documents web, tels que les
+          pages HTML ou XML.
+        </p>
+        <p>
+          Il permet de gérer l'apparence des éléments (couleurs, bordures,
+          polices, etc.) et leur placement (largeur, hauteur, positionnement,
+          etc.).
+        </p>
+        <p class="note">
+          Le rendu d'une page web peut être intégralement modifié sans aucun
+          code supplémentaire dans le fichier HTML.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="emplacements-css">
+        <h2>2. Où écrire le code CSS ?</h2>
+        <p>
+          On peut écrire du code en langage CSS à
+          <strong>trois endroits différents</strong>
+          :
+        </p>
+
+        <ol class="method-list">
+          <li>
+            Dans un <strong>fichier externe</strong> (méthode la plus
+            recommandée). C'est la méthode que nous privilégierons.
+          </li>
+          <li>
+            Dans l'en-tête <code>&lt;head&gt;</code> du fichier HTML, entre des
+            balises <code>&lt;style&gt;</code> (CSS interne).
+          </li>
+          <li>
+            Directement dans les balises du fichier HTML via un attribut
+            <strong><code>style</code></strong> (méthode la moins recommandée).
+            Par exemple : <code>&lt;div align="center"&gt;</code>.
+          </li>
+        </ol>
+
+        <h3>2.1 L'association avec un fichier externe</h3>
+        <p>
+          L'association du fichier HTML à un fichier CSS externe se fait dans
+          l'en-tête <code>&lt;head&gt;</code> du document HTML grâce à la balise
+          suivante :
+        </p>
+        <div class="recommended">
+          <code>&lt;link rel="stylesheet" href="style.css" /&gt;</code>
+          <p style="margin-top: 5px; margin-bottom: 0; font-size: 0.9em">
+            Ceci indique que le fichier HTML est associé au fichier
+            <code>style.css</code> chargé de la mise en forme.
+          </p>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="exemple-css">
+        <h2>3. Exemple : Mettre le texte en rouge</h2>
+        <p>
+          Imaginons que l'on souhaite que le texte du paragraphe du document
+          HTML soit de couleur rouge.
+        </p>
+
+        <h3>3.1 Code HTML (index.html)</h3>
+        <p>
+          Dans le fichier HTML, on placera la balise
+          <code>&lt;link&gt;</code> pour pointer vers le fichier CSS (ici appelé
+          <code>fichiercss.css</code>) :
+        </p>
+        <div class="code-example">
+          <pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;link rel="stylesheet" href="fichiercss.css"&gt;
+&lt;title&gt;Document sans nom&lt;/title&gt;
+&lt;/head&gt;
+&lt;body &gt;
+&lt;p&gt;couleur rouge&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+
+        <h3>3.2 Code CSS (fichiercss.css)</h3>
+        <p>
+          Dans le fichier CSS (<code>fichiercss.css</code>), on ajoute la règle
+          de style ciblant les paragraphes (<code>p</code>) :
+        </p>
+        <div class="code-example">
+          <pre><code>@charset "utf-8";
+/* CSS Document */
+p {
+color: red;
+}
+</code></pre>
+        </div>
+
+        <p>Le résultat obtenu dans le navigateur est le suivant :</p>
+        <figure class="figure">
+          <img
+            src="image8.png"
+            alt="Exemple de texte rouge stylisé en CSS"
+            style="max-width: 500px"
+          />
+          <figcaption>
+            Résultat : Le texte "couleur rouge" apparaît en rouge.
+          </figcaption>
+        </figure>
+      </section>
+
+      <hr />
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page2.html">← Partie Précédente</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page4.html">→ Partie suivante</a>
+        </div>
+      </div>
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - MAURIN N.<br />
+          R1.12 Développement Web
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
