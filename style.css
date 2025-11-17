@@ -204,7 +204,7 @@ th {
 }
 /* Style pour aligner le tableau à 50% de largeur */
 .table-50 {
-  width: 50%;
+  width: 60%;
   margin-left: auto; /* Centre le tableau */
   margin-right: auto; /* Centre le tableau */
 }
