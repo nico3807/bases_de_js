@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Orientation MMI — Switch/Case</title>
+  </head>
+  <body>
+    <script>
+      let choix = prompt(
+        "Choisissez un parcours MMI (1: Parcours Création Numérique, 2: Développement Web et dispositifs interactifs, 3: Stratégie de communication numérique et design d’expérience) :"
+      );
+      let pole = parseInt(choix);
+
+      switch (pole) {
+        case 1:
+          alert(
+            "Parcours Création Numérique : Création numérique, Direction artistique, Design interactif, Motion design, Game design."
+          );
+          break;
+        case 2:
+          alert(
+            "Parcours Développement Web et dispositifs interactifs : Développement web,Intégration, Front-end, Back-end, Réalité virtuelle."
+          );
+          break;
+        case 3:
+          alert(
+            "Parcours Stratégie de communication numérique et design d’expérience : Communication numérique, UX design, Chef de projet, SEO, Community management."
+          );
+          break;
+        default:
+          alert(
+            "Saisie invalide. Veuillez entrer un nombre entre 1 et 3 (les parcours négatifs n’existent pas 😉)."
+          );
+      }
+
+      window.close();
+    </script>
+  </body>
+</html>

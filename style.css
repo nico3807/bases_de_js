@@ -17,7 +17,25 @@
 .back-to-menu a:hover {
   background-color: #0056b3; /* Bleu MMI pour le survol */
 }
-
+.exemple-menu {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+.exemple-menu a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #024b05;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.exemple-menu a:hover {
+  background-color: #048234; /* pour le survol */
+}
 .menu-buttons {
   display: flex; /* Active Flexbox */
   justify-content: center; /* Centre les boutons horizontalement */
@@ -206,7 +224,7 @@ code {
   font-weight: 700;
   color: #ffffff;
   background-color: #000000;
-  font-size: 14px;
+  font-size: 20px;
   font-family: monospace;
   padding: 2px 6px;
   border-radius: 4px;
@@ -219,5 +237,5 @@ pre code {
   background-color: #000000;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 20px;
 }

@@ -78,10 +78,18 @@ document.body.style.color = 'blue'; // Modifie la couleur du texte en bleu
             Résultat : Le chiffre saisi est affiché dans un paragraphe.
           </figcaption>
         </figure>
+        <div class="exemple-menu">
+          <a
+            href="exemples/exemple4.html"
+            onclick="window.open(this.href, 'popup', 'width=800,height=600'); return false;"
+          >
+            Exemple
+          </a>
+        </div>
 
         <p>
-          L'opération se fait en deux étapes : Sélection de l'élément puis
-          Modification du contenu :
+          L'opération se fait en deux étapes : Sélection de l'élément, puis
+          modification du contenu :
         </p>
         <div class="code-example">
           <pre><code>// 1. Sélection de l'élément HTML avec l'ID "MonId"
@@ -92,12 +100,14 @@ document.getElementById("MonId").innerHTML = chiffre;
 
         <ul class="remarques-list">
           <li>
-            <strong>Sélection :</strong> 'document.getElementById("MonId")'
+            <strong>Sélection :</strong>
+            <i><code>'document.getElementById("MonId")'</code></i>
             sélectionne l'élément HTML ayant l'attribut 'id' égal à "MonId".
           </li>
           <li>
-            <strong>Contenu :</strong> '.innerHTML=chiffre' modifie le contenu
-            HTML de cet élément sélectionné.
+            <strong>Contenu :</strong>
+            <i><code>'.innerHTML=chiffre'</code></i> modifie le contenu HTML de
+            cet élément sélectionné.
           </li>
         </ul>
       </section>
@@ -109,8 +119,8 @@ document.getElementById("MonId").innerHTML = chiffre;
           2. Récupération des Propriétés CSS (<code>getComputedStyle()</code>)
         </h2>
         <p>
-          La propriété 'style' ne permet pas de récupérer les valeurs CSS
-          définies dans les feuilles de style externes.
+          La propriété <i><code>'style'</code></i> ne permet pas de récupérer
+          les valeurs CSS définies dans les feuilles de style externes.
         </p>
         <p>
           Pour pallier cette limitation, on utilise la fonction
@@ -160,6 +170,14 @@ alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
 &lt;/div&gt;
 </code></pre>
         </div>
+        <div class="exemple-menu">
+          <a
+            href="exemples/exercice_redimension_image.html"
+            onclick="window.open(this.href, 'popup', 'width=800,height=600'); return false;"
+          >
+            Exemple
+          </a>
+        </div>
 
         <h3>Tâches à réaliser</h3>
         <ol>
@@ -195,10 +213,13 @@ alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
         </p>
         <ul>
           <li>
-            Ajouter un '<input type="range" />' pour permettre un
+            Ajouter un <input type="range" /> pour permettre un
             redimensionnement plus précis et interactif.
           </li>
-          <li>Ceci introduit la gestion de l'événement 'input' HTML.</li>
+          <li>
+            Ceci introduit la gestion de l'événement
+            <i><code>'input'</code></i> HTML.
+          </li>
           <li>
             Bonus : afficher la valeur d’agrandissement ou de réduction en %.
           </li>
