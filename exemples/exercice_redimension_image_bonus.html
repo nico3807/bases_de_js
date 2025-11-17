@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>cours javascript2</title>
+    <style type="text/css">
+      #bouton1 {
+        position: fixed;
+        top: 10px;
+        z-index: 10;
+      }
+      #cadre {
+        position: fixed;
+        top: 80px;
+        z-index: 10;
+      }
+    </style>
+    <script>
+      function agrandir() {
+        let image = document.getElementById("image");
+        let largeur = image.width;
+        let hauteur = image.height;
+
+        if (largeur < 800 && hauteur < 800) {
+          image.width = Math.round(largeur * 1.1);
+          image.height = Math.round(hauteur * 1.1);
+        } else {
+          alert("Taille maximale atteinte !");
+        }
+      }
+
+      function reduire() {
+        let image = document.getElementById("image");
+        let largeur = image.width;
+        let hauteur = image.height;
+
+        if (largeur > 100 && hauteur > 100) {
+          image.width = Math.round(largeur * 0.9);
+          image.height = Math.round(hauteur * 0.9);
+        } else {
+          alert("Taille minimale atteinte !");
+        }
+      }
+
+      function resetImage() {
+        let image = document.getElementById("image");
+        image.width = 400;
+        image.height = 400;
+      }
+
+      let image = document.getElementById("image");
+      image.height = val;
+
+      function resizeImage(val) {
+        let image = document.getElementById("image");
+        image.width = val;
+        image.height = val;
+        let percent = Math.round((val / 400) * 100);
+        document.getElementById("percentage").innerText =
+          "Taille actuelle : " + percent + "%";
+      }
+    </script>
+  </head>
+  <body>
+    <div align="center" id="bouton1">
+      <button onclick="resetImage()">Réinitialiser</button>
+    </div>
+    <div align="center" id="slider">
+      <input
+        id="slider"
+        max="800"
+        min="100"
+        onchange="resizeImage(this.value)"
+        type="range"
+        value="400"
+      />
+    </div>
+    <p id="percentage">Taille actuelle : 100%</p>
+    <div align="center" id="cadre">
+      <img
+        alt=""
+        height="400"
+        id="image"
+        src="logo_MMI_Beziers.jpg"
+        width="400"
+      />
+    </div>
+  </body>
+</html>
