@@ -1179,3 +1179,9 @@ footer a {
 .diagram.large img {
   max-width: 100%;
 }
+/* Image à fond transparent et texte blanc : elle a besoin d'un fond foncé
+   pour rester lisible, en mode clair comme en mode sombre. */
+.diagram.fond-sombre img {
+  background: #1c2333;
+  padding: 0.5rem;
+}
