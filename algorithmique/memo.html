@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mémo - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="memo">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Aide-mémoire</p>
+      <h1>Pseudo-code et JavaScript</h1>
+      <p class="lede">À garder ouvert dans un onglet pendant les exercices.</p>
+
+      <h2>Correspondances</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Notion</th>
+              <th>Pseudo-code</th>
+              <th>JavaScript</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Déclarer et affecter</td>
+              <td><code>x ← 5</code></td>
+              <td><code>let x = 5;</code> puis <code>x = 6;</code></td>
+            </tr>
+            <tr>
+              <td>Constante</td>
+              <td><code>CONSTANTE TVA ← 1.2</code></td>
+              <td><code>const TVA = 1.2;</code></td>
+            </tr>
+            <tr>
+              <td>Afficher</td>
+              <td><code>AFFICHER x</code></td>
+              <td><code>console.log(x);</code></td>
+            </tr>
+            <tr>
+              <td>Lire une saisie</td>
+              <td><code>LIRE x</code></td>
+              <td><code>let x = parseInt(prompt("Nombre ?"));</code></td>
+            </tr>
+            <tr>
+              <td>Condition</td>
+              <td><pre><code>SI x &gt; 0 ALORS
+  …
+SINON SI x = 0 ALORS
+  …
+SINON
+  …
+FIN SI</code></pre></td>
+              <td><pre><code>if (x &gt; 0) {
+  …
+} else if (x === 0) {
+  …
+} else {
+  …
+}</code></pre></td>
+            </tr>
+            <tr>
+              <td>Boucle POUR</td>
+              <td><pre><code>POUR i DE 1 À 10 FAIRE
+  …
+FIN POUR</code></pre></td>
+              <td><pre><code>for (let i = 1; i &lt;= 10; i++) {
+  …
+}</code></pre></td>
+            </tr>
+            <tr>
+              <td>Boucle TANT QUE</td>
+              <td><pre><code>TANT QUE x &lt; 100 FAIRE
+  …
+FIN TANT QUE</code></pre></td>
+              <td><pre><code>while (x &lt; 100) {
+  …
+}</code></pre></td>
+            </tr>
+            <tr>
+              <td>Tableau</td>
+              <td><code>t ← [4, 7, 1]</code>, <code>t[0]</code>, <code>TAILLE(t)</code></td>
+              <td><code>let t = [4, 7, 1];</code>, <code>t[0]</code>, <code>t.length</code>, <code>t.push(9)</code></td>
+            </tr>
+            <tr>
+              <td>Parcours de tableau</td>
+              <td><pre><code>POUR i DE 0 À TAILLE(t) - 1 FAIRE
+  … t[i] …
+FIN POUR</code></pre></td>
+              <td><pre><code>for (let i = 0; i &lt; t.length; i++) {
+  … t[i] …
+}</code></pre></td>
+            </tr>
+            <tr>
+              <td>Fonction</td>
+              <td><pre><code>FONCTION carre(n)
+  RETOURNER n × n
+FIN FONCTION</code></pre></td>
+              <td><pre><code>function carre(n) {
+  return n * n;
+}</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Opérateurs</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Calcul</h3>
+          <ul>
+            <li><code>+ - * /</code></li>
+            <li><code>%</code> reste de la division</li>
+            <li><code>x++</code> ajoute 1 à <code>x</code></li>
+            <li><code>Math.floor(x)</code> arrondi inférieur</li>
+            <li><code>Math.round(x)</code> arrondi</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Comparaison</h3>
+          <ul>
+            <li><code>===</code> égal, <code>!==</code> différent</li>
+            <li><code>&lt;</code> <code>&gt;</code> strictement</li>
+            <li><code>&lt;=</code> <code>&gt;=</code> ou égal</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Logique</h3>
+          <ul>
+            <li><code>&amp;&amp;</code> ET : les deux</li>
+            <li><code>||</code> OU : au moins un</li>
+            <li><code>!</code> NON : inverse</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Les schémas à connaître</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Schéma</th>
+              <th>Avant la boucle</th>
+              <th>Dans la boucle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Somme / accumulateur</td><td><code>let somme = 0;</code></td><td><code>somme = somme + t[i];</code></td></tr>
+            <tr><td>Compteur</td><td><code>let nb = 0;</code></td><td><code>if (condition) { nb = nb + 1; }</code></td></tr>
+            <tr><td>Maximum</td><td><code>let max = t[0];</code></td><td><code>if (t[i] &gt; max) { max = t[i]; }</code></td></tr>
+            <tr><td>Recherche</td><td><code>let trouve = false;</code></td><td><code>if (t[i] === cherche) { trouve = true; }</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Méthode pour résoudre un exercice</h2>
+      <ol class="timeline">
+        <li><span><strong>Comprendre</strong> - Quelles sont les entrées ? Quelle sortie exacte attend-on ?</span></li>
+        <li><span><strong>Faire à la main</strong> - Résoudre un petit exemple sur papier, en notant chaque étape.</span></li>
+        <li><span><strong>Écrire le pseudo-code</strong> - Généraliser ce qu'on a fait à la main. Quelles variables ? Faut-il une condition, une boucle ?</span></li>
+        <li><span><strong>Coder</strong> - Traduire ligne par ligne en JavaScript.</span></li>
+        <li><span><strong>Tester</strong> - Plusieurs valeurs, dont les cas limites : 0, négatif, tableau vide, égalité…</span></li>
+      </ol>
+
+      <h2>Erreurs fréquentes</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Symptôme</th>
+              <th>Cause probable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>ReferenceError: x is not defined</code></td><td>Variable jamais déclarée, faute de frappe, ou majuscule oubliée (<code>Age</code> ≠ <code>age</code>).</td></tr>
+            <tr><td><code>SyntaxError: Unexpected token</code></td><td>Parenthèse, accolade ou guillemet mal fermé. Vérifiez qu'à chaque <code>{</code> correspond une <code>}</code>.</td></tr>
+            <tr><td>Le calcul donne <code>"53"</code> au lieu de 8</td><td>Une des valeurs est une chaîne (souvent issue de <code>prompt()</code>) : utilisez <code>parseInt()</code>.</td></tr>
+            <tr><td><code>NaN</code> (Not a Number)</td><td>Calcul avec <code>undefined</code> ou avec un texte : une fonction sans <code>return</code>, une case de tableau inexistante…</td></tr>
+            <tr><td><code>undefined</code> dans un tableau</td><td>Indice hors limites : la dernière case est <code>length - 1</code>.</td></tr>
+            <tr><td>La page se fige</td><td>Boucle infinie : la condition du <code>while</code> ne devient jamais fausse.</td></tr>
+            <tr><td>La condition est toujours vraie</td><td><code>if (x = 5)</code> au lieu de <code>if (x === 5)</code> : on a affecté au lieu de comparer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <h4>Pour aller plus loin</h4>
+        <p>
+          Retrouvez le détail de la syntaxe JavaScript dans les pages du
+          <a href="../index.html">TD Bases du JavaScript</a>, et la
+          documentation de référence sur
+          <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide" target="_blank" rel="noopener">MDN Web Docs</a>.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

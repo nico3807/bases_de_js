@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les conditions - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="conditions">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 3</p>
+      <h1>Les conditions : faire des choix</h1>
+      <p class="lede">
+        Jusqu'ici, nos programmes exécutaient toutes leurs lignes, de haut en
+        bas. Une condition permet de n'exécuter certaines instructions
+        <strong>que si</strong> une situation est vraie : afficher un message
+        d'erreur si le mot de passe est trop court, changer de niveau si le
+        score dépasse 100…
+      </p>
+
+      <h2>Des questions à réponse vrai / faux</h2>
+      <p>
+        Une condition est une expression dont le résultat est un
+        <strong>booléen</strong> : <code>true</code> (vrai) ou
+        <code>false</code> (faux). On l'obtient le plus souvent en comparant
+        deux valeurs :
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Opérateur</th>
+              <th>Signification</th>
+              <th>Exemple (avec <code>age = 17</code>)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>===</code></td><td>égal à (valeur et type)</td><td><code>age === 18</code> → <code>false</code></td></tr>
+            <tr><td><code>!==</code></td><td>différent de</td><td><code>age !== 18</code> → <code>true</code></td></tr>
+            <tr><td><code>&lt;</code> / <code>&gt;</code></td><td>strictement inférieur / supérieur</td><td><code>age &lt; 18</code> → <code>true</code></td></tr>
+            <tr><td><code>&lt;=</code> / <code>&gt;=</code></td><td>inférieur / supérieur ou égal</td><td><code>age &gt;= 18</code> → <code>false</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <h4>= , == ou === ?</h4>
+        <p>
+          <code>=</code> <strong>range</strong> une valeur (affectation).
+          <code>===</code> <strong>compare</strong> deux valeurs. Il existe
+          aussi <code>==</code>, qui compare en convertissant les types
+          (<code>"5" == 5</code> est vrai !) : prenez l'habitude d'utiliser
+          <code>===</code>, plus prévisible.
+        </p>
+      </div>
+
+      <h2>SI … ALORS … SINON</h2>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>SI motDePasse.longueur &lt; 8 ALORS
+  AFFICHER "Trop court"
+SINON
+  AFFICHER "Mot de passe accepté"
+FIN SI</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>if (motDePasse.length &lt; 8) {
+  console.log("Trop court");
+} else {
+  console.log("Mot de passe accepté");
+}</code></pre>
+        </div>
+      </div>
+      <ul>
+        <li>La condition se place entre <strong>parenthèses</strong> après <code>if</code>.</li>
+        <li>
+          Les instructions à exécuter se placent entre
+          <strong>accolades</strong> <code>{ }</code>. On les
+          <strong>indente</strong> (décale vers la droite) pour voir d'un coup
+          d'œil ce qui dépend de la condition.
+        </li>
+        <li>Le bloc <code>else</code> (sinon) est <strong>facultatif</strong>.</li>
+        <li>Un seul des deux blocs est exécuté, jamais les deux.</li>
+      </ul>
+
+      <h2>Plusieurs cas : SINON SI</h2>
+      <p>
+        Quand il y a plus de deux possibilités, on enchaîne les tests avec
+        <code>else if</code>. Les conditions sont testées <strong>dans
+        l'ordre</strong>, et <strong>dès qu'une est vraie</strong>, son bloc
+        est exécuté et les suivantes sont ignorées.
+      </p>
+      <p>
+        Exemple : un cinéma applique le tarif enfant (5 €) avant 14 ans, le
+        tarif jeune (7,50 €) avant 26 ans, et le plein tarif (11 €) sinon.
+        Changez l'âge de départ et observez quel chemin prend le programme.
+      </p>
+      <div id="trace-cinema"></div>
+
+      <div class="quiz">
+        <p class="quiz-question">
+          Un·e camarade a écrit ce code. Qu'affiche-t-il pour
+          <code>age = 10</code> ?
+        </p>
+        <pre><code>if (age &lt; 26) {
+  console.log("Tarif jeune");
+} else if (age &lt; 14) {
+  console.log("Tarif enfant");
+}</code></pre>
+        <div class="quiz-choix">
+          <button type="button">Tarif enfant</button>
+          <button type="button" data-bon>Tarif jeune</button>
+          <button type="button">Tarif jeune puis Tarif enfant</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          10 &lt; 26 est vrai : le premier bloc est exécuté et le
+          <code>else if</code> n'est même pas testé. Le tarif enfant ne sera
+          <strong>jamais</strong> affiché ! Dans une suite de
+          <code>else if</code>, l'<strong>ordre des tests</strong> est
+          essentiel : on va du cas le plus restrictif au plus général.
+        </p>
+      </div>
+
+      <h2>Combiner des conditions : ET, OU, NON</h2>
+      <p>
+        Pour tester plusieurs choses à la fois, on combine les conditions
+        avec les <strong>opérateurs logiques</strong> :
+      </p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3><code>&amp;&amp;</code> : ET</h3>
+          <p>Vrai seulement si <strong>les deux</strong> conditions sont vraies.</p>
+          <p><code>age &gt;= 18 &amp;&amp; aLePermis</code></p>
+        </div>
+        <div class="card">
+          <h3><code>||</code> : OU</h3>
+          <p>Vrai si <strong>au moins une</strong> des deux conditions est vraie.</p>
+          <p><code>jour === "samedi" || jour === "dimanche"</code></p>
+        </div>
+        <div class="card">
+          <h3><code>!</code> : NON</h3>
+          <p>Inverse une condition : vrai devient faux, faux devient vrai.</p>
+          <p><code>!estConnecte</code></p>
+        </div>
+      </div>
+
+      <h3>Manipulez la table de vérité</h3>
+      <p>
+        Cliquez sur les valeurs de <code>A</code> et <code>B</code> pour les
+        faire passer de <code>false</code> à <code>true</code>, et observez
+        les résultats. Trouvez la seule combinaison qui rend
+        <code>A &amp;&amp; B</code> vrai, et la seule qui rend
+        <code>A || B</code> faux.
+      </p>
+      <div class="verite" data-verite>
+        <div>
+          <div class="interrupteur">
+            <span><strong>A</strong> : « il fait beau »</span>
+            <button type="button" data-var="a" aria-pressed="false">false</button>
+          </div>
+          <div class="interrupteur">
+            <span><strong>B</strong> : « j'ai fini mon projet »</span>
+            <button type="button" data-var="b" aria-pressed="false">false</button>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted)">
+            « Je vais à la plage si il fait beau <strong>ET</strong> que j'ai
+            fini mon projet » correspond à <code>A &amp;&amp; B</code>.
+          </p>
+        </div>
+        <div class="card verite-resultats" style="padding: 0.4rem 0">
+          <div><span>A &amp;&amp; B</span><span data-expr="et"></span></div>
+          <div><span>A || B</span><span data-expr="ou"></span></div>
+          <div><span>!A</span><span data-expr="nonA"></span></div>
+          <div style="border-bottom: none"><span>!B</span><span data-expr="nonB"></span></div>
+        </div>
+      </div>
+
+      <div class="essai" data-essai data-titre="À vous de jouer : accès à une soirée">
+        <textarea>let age = 20;
+let estInscrit = false;
+
+// Entrée autorisée si la personne est majeure ET inscrite
+if (age >= 18 && estInscrit) {
+  console.log("Bienvenue !");
+} else {
+  console.log("Accès refusé");
+}
+
+// Modifiez age et estInscrit, puis essayez en remplaçant && par ||</textarea>
+      </div>
+
+      <div class="callout ok">
+        <h4>À retenir</h4>
+        <ul>
+          <li>Une condition vaut <code>true</code> ou <code>false</code>. On compare avec <code>===</code>, <code>!==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>.</li>
+          <li><code>if</code> / <code>else if</code> / <code>else</code> : un seul bloc est exécuté, le premier dont la condition est vraie.</li>
+          <li><code>&amp;&amp;</code> exige tout, <code>||</code> se contente d'un seul, <code>!</code> inverse.</li>
+        </ul>
+      </div>
+      <p>
+        Pour aller plus loin, le TD
+        <a href="../page4_1.html">structures conditionnelles</a> présente aussi
+        l'instruction <code>switch</code>. Entraînez-vous :
+        <a href="exercices.html#exo-4">exercices 4 à 6</a>.
+      </p>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="variables.html">← Les variables</a>
+        <a class="btn" href="boucles.html">Chapitre 4 : les boucles →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/trace.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/pages/conditions.js"></script>
+  </body>
+</html>
