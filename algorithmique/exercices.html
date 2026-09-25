@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercices - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="exercices">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Entraînement</p>
+      <h1>Les exercices</h1>
+      <p class="lede">
+        18 exercices, du plus simple au défi, rangés par chapitre. Écrivez
+        votre code, testez-le avec <em>▶ Exécuter</em>, puis cliquez sur
+        <em>✔ Vérifier</em> : votre programme est testé avec plusieurs
+        valeurs de départ, pas seulement celle de l'énoncé.
+      </p>
+
+      <div class="callout warn">
+        <h4>Jouez le jeu</h4>
+        <p>
+          Avant de lire l'indice, <strong>écrivez le pseudo-code sur une
+          feuille</strong> et faites tourner l'algorithme à la main sur un
+          petit exemple. Avant d'afficher la solution, laissez-vous au moins
+          deux essais. Un exercice copié ne vous apprend rien ; un exercice
+          raté puis compris, beaucoup.
+        </p>
+      </div>
+
+      <div class="exo-toolbar">
+        <strong style="font-size: 0.88rem">Chapitre :</strong>
+        <div class="filtre">
+          <button type="button" data-filtre="tous" class="active" aria-pressed="true">Tous</button>
+          <button type="button" data-filtre="variables" aria-pressed="false">Variables</button>
+          <button type="button" data-filtre="conditions" aria-pressed="false">Conditions</button>
+          <button type="button" data-filtre="boucles" aria-pressed="false">Boucles</button>
+          <button type="button" data-filtre="tableaux" aria-pressed="false">Tableaux</button>
+          <button type="button" data-filtre="fonctions" aria-pressed="false">Fonctions</button>
+        </div>
+        <span class="progress-text" id="progress-text">0 / 0 exercices réussis</span>
+      </div>
+
+      <div id="exo-liste" aria-live="polite">
+        <p class="lede">Chargement des exercices…</p>
+      </div>
+
+      <div class="callout info">
+        <h4>Votre progression est gardée dans ce navigateur</h4>
+        <p>
+          Les exercices réussis et le code que vous tapez sont mémorisés sur
+          cet ordinateur, dans ce navigateur : vous pouvez fermer la page et
+          reprendre plus tard. Ils ne sont envoyés nulle part.
+        </p>
+        <p>
+          <button type="button" class="btn secondary petit" id="effacer-progression">Effacer ma progression</button>
+        </p>
+      </div>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="fonctions.html">← Les fonctions</a>
+        <a class="btn" href="memo.html">Le mémo →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/exercices-data.js"></script>
+    <script src="js/exercices.js"></script>
+  </body>
+</html>

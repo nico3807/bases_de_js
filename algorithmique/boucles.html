@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les boucles - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="boucles">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 4</p>
+      <h1>Les boucles : répéter sans recopier</h1>
+      <p class="lede">
+        Afficher 100 étoiles, parcourir les 50 produits d'une boutique,
+        relancer une animation tant que la souris survole un bouton : dès
+        qu'une action se répète, on utilise une boucle plutôt que de recopier
+        la même ligne.
+      </p>
+
+      <h2>Pourquoi une boucle ?</h2>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Sans boucle 😩</h4>
+          <pre><code>console.log("Ligne 1");
+console.log("Ligne 2");
+console.log("Ligne 3");
+// … et si on en veut 500 ?</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>Avec une boucle 😎</h4>
+          <pre><code>for (let i = 1; i &lt;= 500; i++) {
+  console.log("Ligne " + i);
+}</code></pre>
+        </div>
+      </div>
+      <p>
+        Toute boucle répond à trois questions : <strong>où commence-t-on</strong>
+        ? <strong>jusqu'à quand continue-t-on</strong> ? <strong>comment
+        avance-t-on</strong> d'un tour à l'autre ? Oublier la troisième, c'est
+        créer une <strong>boucle infinie</strong>.
+      </p>
+
+      <h2>La boucle POUR (for) : un nombre de tours connu</h2>
+      <p>
+        On l'utilise quand on sait <strong>à l'avance</strong> combien de fois
+        répéter : 10 fois, autant de fois qu'il y a d'éléments dans une liste…
+        Elle utilise une variable <strong>compteur</strong>, souvent nommée
+        <code>i</code>.
+      </p>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>POUR i DE 1 À 5 FAIRE
+  AFFICHER i
+FIN POUR</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>for (let i = 1; i &lt;= 5; i++) {
+  console.log(i);
+}</code></pre>
+        </div>
+      </div>
+      <p>Les trois parties entre parenthèses, séparées par des <code>;</code> :</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <p class="eyebrow">1. Initialisation</p>
+          <p><code>let i = 1</code> : exécutée <strong>une seule fois</strong>, avant le premier tour.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">2. Condition</p>
+          <p><code>i &lt;= 5</code> : testée <strong>avant chaque tour</strong>. Si elle est fausse, la boucle s'arrête.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">3. Incrémentation</p>
+          <p><code>i++</code> (c'est-à-dire <code>i = i + 1</code>) : exécutée <strong>après chaque tour</strong>.</p>
+        </div>
+      </div>
+
+      <h3>Le schéma de l'accumulateur</h3>
+      <p>
+        Très souvent, une boucle sert à <strong>construire un résultat petit
+        à petit</strong> : une somme, un total de panier, un texte. On
+        prépare une variable <strong>avant</strong> la boucle, on la met à
+        jour <strong>dans</strong> la boucle, et on l'utilise
+        <strong>après</strong>. Suivez la somme 1 + 2 + … + n :
+      </p>
+      <div id="trace-somme"></div>
+
+      <div class="quiz">
+        <p class="quiz-question">Combien de fois « MMI » est-il affiché ?</p>
+        <pre><code>for (let i = 0; i &lt; 4; i++) {
+  console.log("MMI");
+}</code></pre>
+        <div class="quiz-choix">
+          <button type="button">3 fois</button>
+          <button type="button" data-bon>4 fois</button>
+          <button type="button">5 fois</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          <code>i</code> prend les valeurs 0, 1, 2 et 3 (quand <code>i</code>
+          vaut 4, <code>i &lt; 4</code> est faux). Partir de 0 avec
+          <code>&lt;</code> est la forme la plus courante : c'est exactement
+          celle qu'on utilisera pour parcourir les tableaux.
+        </p>
+      </div>
+
+      <h2>La boucle TANT QUE (while) : on ne sait pas quand ça s'arrête</h2>
+      <p>
+        On l'utilise quand le nombre de tours dépend de ce qui se passe
+        pendant la boucle : redemander un mot de passe tant qu'il est faux,
+        faire tomber un objet tant qu'il n'a pas touché le sol, lancer un dé
+        jusqu'à obtenir un 6…
+      </p>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>abonnes ← 100
+semaines ← 0
+TANT QUE abonnes &lt; 1000 FAIRE
+  abonnes ← abonnes × 2
+  semaines ← semaines + 1
+FIN TANT QUE
+AFFICHER semaines</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>let abonnes = 100;
+let semaines = 0;
+while (abonnes &lt; 1000) {
+  abonnes = abonnes * 2;
+  semaines = semaines + 1;
+}
+console.log(semaines);</code></pre>
+        </div>
+      </div>
+      <p>
+        Un compte qui double ses abonné·es chaque semaine : combien de
+        semaines pour passer de 100 à 1000 ? Essayez aussi avec un départ à
+        1000 (la boucle ne fait <strong>aucun</strong> tour), puis avec un
+        départ à 0…
+      </p>
+      <div id="trace-abonnes"></div>
+
+      <div class="callout danger">
+        <h4>La boucle infinie</h4>
+        <p>
+          Si la condition d'un <code>while</code> ne devient jamais fausse, le
+          programme tourne sans fin et l'onglet du navigateur se fige. Avec un
+          départ à 0 abonné, <code>0 × 2</code> vaut toujours 0 : la condition
+          <code>abonnes &lt; 1000</code> reste vraie pour toujours. Avant
+          d'écrire un <code>while</code>, demandez-vous toujours :
+          <strong>qu'est-ce qui, dans la boucle, rapproche la condition de
+          devenir fausse ?</strong>
+        </p>
+      </div>
+
+      <h2>for ou while ?</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Situation</th>
+              <th>Boucle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Afficher les 10 premiers produits</td><td><code>for</code> : on sait qu'il y a 10 tours.</td></tr>
+            <tr><td>Parcourir toutes les cases d'un tableau</td><td><code>for</code> : autant de tours que de cases.</td></tr>
+            <tr><td>Redemander une saisie tant qu'elle est invalide</td><td><code>while</code> : on ne sait pas combien d'essais il faudra.</td></tr>
+            <tr><td>Faire avancer un personnage jusqu'au bord de l'écran</td><td><code>while</code> : ça dépend de sa vitesse et de sa position.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Tout ce qu'on écrit avec <code>for</code> peut s'écrire avec
+        <code>while</code> (et inversement), mais choisir la bonne boucle rend
+        le code plus lisible.
+      </p>
+
+      <div class="essai" data-essai data-titre="À vous de jouer : un sapin d'étoiles">
+        <textarea>let hauteur = 5;
+let ligne = "";
+
+for (let i = 1; i <= hauteur; i++) {
+  ligne = ligne + "*";
+  console.log(ligne);
+}
+
+// Défi : affichez le sapin à l'envers (5 étoiles, puis 4, puis 3…)</textarea>
+      </div>
+
+      <div class="callout ok">
+        <h4>À retenir</h4>
+        <ul>
+          <li><code>for</code> quand le nombre de tours est connu, <code>while</code> quand il dépend d'une condition.</li>
+          <li>La condition est testée <strong>avant</strong> chaque tour : une boucle peut ne faire aucun tour.</li>
+          <li>Accumulateur : initialiser avant, mettre à jour dans la boucle, utiliser après.</li>
+          <li>Dans un <code>while</code>, quelque chose doit faire évoluer la condition, sinon : boucle infinie.</li>
+        </ul>
+      </div>
+      <p>
+        Pour aller plus loin, le TD <a href="../page4_2.html">boucles de
+        répétition</a> présente aussi <code>do … while</code>. Entraînez-vous :
+        <a href="exercices.html#exo-7">exercices 7 à 11</a>.
+      </p>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="conditions.html">← Les conditions</a>
+        <a class="btn" href="tableaux.html">Chapitre 5 : les tableaux →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/trace.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/pages/boucles.js"></script>
+  </body>
+</html>

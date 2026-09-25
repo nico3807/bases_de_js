@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les fonctions - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="fonctions">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 6</p>
+      <h1>Les fonctions : découper pour mieux régner</h1>
+      <p class="lede">
+        Quand un programme grossit, on le découpe en petits
+        sous-programmes, chacun chargé d'une seule tâche et doté d'un nom
+        clair. Ce sont les fonctions. Vous en utilisez déjà :
+        <code>console.log()</code>, <code>Math.floor()</code>,
+        <code>parseInt()</code>…
+      </p>
+
+      <h2>Une fonction, c'est une machine</h2>
+      <div class="flux">
+        <div class="flux-etape">
+          <strong>Paramètres</strong>
+          <p>Les valeurs qu'on donne à la fonction quand on l'appelle : ses ingrédients.</p>
+        </div>
+        <div class="flux-fleche" aria-hidden="true">→</div>
+        <div class="flux-etape">
+          <strong>Corps de la fonction</strong>
+          <p>L'algorithme, écrit une seule fois, qui travaille sur les paramètres.</p>
+        </div>
+        <div class="flux-fleche" aria-hidden="true">→</div>
+        <div class="flux-etape">
+          <strong>Valeur de retour</strong>
+          <p>Le résultat que la fonction renvoie avec <code>return</code>, à l'endroit où on l'a appelée.</p>
+        </div>
+      </div>
+
+      <h2>Définir, puis appeler</h2>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>FONCTION prixTTC(prixHT) : réel
+  RETOURNER prixHT × 1.2
+FIN FONCTION
+
+AFFICHER prixTTC(50)    // 60
+AFFICHER prixTTC(10)    // 12</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>function prixTTC(prixHT) {
+  return prixHT * 1.2;
+}
+
+console.log(prixTTC(50)); // 60
+console.log(prixTTC(10)); // 12</code></pre>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <strong>Définir</strong> une fonction (le mot-clé
+          <code>function</code>) ne l'exécute pas : on explique seulement
+          comment faire.
+        </li>
+        <li>
+          <strong>Appeler</strong> la fonction (son nom suivi de parenthèses)
+          l'exécute. On peut l'appeler autant de fois qu'on veut, avec des
+          valeurs différentes.
+        </li>
+        <li>
+          <code>prixHT</code> est un <strong>paramètre</strong> : une variable
+          qui reçoit, à chaque appel, la valeur placée entre les parenthèses
+          (l'<strong>argument</strong>).
+        </li>
+      </ul>
+
+      <h2>Exécution pas à pas : le voyage d'un appel</h2>
+      <p>
+        Observez bien le « saut » : lors d'un appel, l'exécution part dans la
+        fonction, puis <strong>revient</strong> à l'endroit de l'appel avec la
+        valeur renvoyée. Les variables créées dans la fonction
+        (<code>prixHT</code>, <code>ttc</code>) n'existent que pendant
+        l'appel : on dit qu'elles sont <strong>locales</strong>.
+      </p>
+      <div id="trace-fonction"></div>
+
+      <h2>return ou console.log ?</h2>
+      <div class="callout danger">
+        <h4>La confusion n° 1</h4>
+        <p>
+          <code>console.log()</code> <strong>affiche</strong> une valeur pour
+          l'humain qui regarde la console, puis l'oublie.
+          <code>return</code> <strong>renvoie</strong> une valeur au programme,
+          qui peut la ranger dans une variable, la comparer, la réutiliser
+          dans un calcul. Une fonction qui calcule quelque chose doit
+          <strong>renvoyer</strong> son résultat ; c'est à celui qui l'appelle
+          de décider s'il veut l'afficher.
+        </p>
+      </div>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>✘ Affiche, mais ne renvoie rien</h4>
+          <pre><code>function double(n) {
+  console.log(n * 2);
+}
+let x = double(5) + 1;
+// affiche 10, puis x vaut NaN :
+// double(5) vaut undefined !</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>✔ Renvoie le résultat</h4>
+          <pre><code>function double(n) {
+  return n * 2;
+}
+let x = double(5) + 1;
+// x vaut 11
+console.log(x);</code></pre>
+        </div>
+      </div>
+      <p>
+        Autre point important : <strong><code>return</code> arrête
+        immédiatement la fonction</strong>. Les lignes situées après un
+        <code>return</code> exécuté ne sont jamais lues.
+      </p>
+
+      <div class="quiz">
+        <p class="quiz-question">Qu'affiche ce programme ?</p>
+        <pre><code>function signe(n) {
+  if (n &lt; 0) {
+    return "négatif";
+  }
+  return "positif ou nul";
+}
+console.log(signe(-4));</code></pre>
+        <div class="quiz-choix">
+          <button type="button" data-bon>négatif</button>
+          <button type="button">positif ou nul</button>
+          <button type="button">négatif puis positif ou nul</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          -4 &lt; 0 est vrai : le premier <code>return</code> est exécuté et
+          la fonction s'arrête aussitôt. Le second <code>return</code> n'est
+          atteint que si la condition est fausse : pas besoin de
+          <code>else</code> !
+        </p>
+      </div>
+
+      <h2>Pourquoi découper en fonctions ?</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Ne pas se répéter</h3>
+          <p>
+            Un calcul utilisé à dix endroits est écrit une seule fois. Une
+            correction se fait à un seul endroit.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Lisibilité</h3>
+          <p>
+            <code>if (estMajeur(age))</code> se lit comme une phrase. Un bon
+            nom de fonction est un verbe qui dit ce qu'elle fait.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Tester séparément</h3>
+          <p>
+            Chaque fonction se teste toute seule, avec quelques valeurs, avant
+            de l'assembler avec le reste du programme.
+          </p>
+        </div>
+      </div>
+
+      <div class="essai" data-essai data-titre="À vous de jouer : des fonctions qui s'appellent">
+        <textarea>function estMajeur(age) {
+  return age >= 18;
+}
+
+function messageAccueil(prenom, age) {
+  if (estMajeur(age)) {
+    return "Bienvenue " + prenom + " !";
+  }
+  return "Désolé " + prenom + ", il faut être majeur·e.";
+}
+
+console.log(messageAccueil("Léa", 19));
+console.log(messageAccueil("Tom", 15));
+
+// Écrivez une fonction aireRectangle(largeur, hauteur)
+// puis affichez aireRectangle(4, 3)</textarea>
+      </div>
+
+      <div class="callout info">
+        <h4>Et dans une page web ?</h4>
+        <p>
+          C'est avec les fonctions que JavaScript devient interactif : on
+          écrit une fonction, puis on demande au navigateur de l'appeler quand
+          l'utilisateur·rice clique sur un bouton. Le TD
+          <a href="../page6.html">Fonctions en JavaScript</a> et le TD
+          <a href="../page7.html">Interaction DOM</a> vous montrent comment.
+        </p>
+      </div>
+
+      <div class="callout ok">
+        <h4>À retenir</h4>
+        <ul>
+          <li>On <strong>définit</strong> une fonction une fois, on l'<strong>appelle</strong> autant qu'on veut.</li>
+          <li>Les paramètres reçoivent les valeurs données à l'appel ; les variables d'une fonction sont locales.</li>
+          <li><code>return</code> renvoie le résultat et termine la fonction ; <code>console.log</code> ne fait qu'afficher.</li>
+        </ul>
+      </div>
+      <p>Entraînez-vous : <a href="exercices.html#exo-15">exercices 15 à 18</a>.</p>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="tableaux.html">← Les tableaux</a>
+        <a class="btn" href="exercices.html">Passer aux exercices →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/trace.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/pages/fonctions.js"></script>
+  </body>
+</html>

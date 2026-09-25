@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penser comme un algorithme - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="algorithme">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 1</p>
+      <h1>Penser comme un algorithme</h1>
+      <p class="lede">
+        Un ordinateur est très rapide, mais il n'a aucune imagination : il
+        exécute des instructions, une par une, exactement comme elles sont
+        écrites. Tout l'enjeu est d'écrire les bonnes instructions.
+      </p>
+
+      <h2>Qu'est-ce qu'un algorithme ?</h2>
+      <div class="card">
+        <p>
+          Un <strong>algorithme</strong> est une suite <strong>finie</strong>
+          d'instructions <strong>précises</strong>, exécutées
+          <strong>dans un ordre donné</strong>, qui permet de résoudre un
+          problème ou d'obtenir un résultat.
+        </p>
+        <p>
+          Vous en suivez tous les jours sans le savoir : une recette de
+          cuisine, un tutoriel de montage de meuble, l'itinéraire donné par
+          votre GPS ou les étapes pour publier une story sont des algorithmes.
+        </p>
+      </div>
+
+      <h3>Un algorithme transforme des entrées en sorties</h3>
+      <div class="flux">
+        <div class="flux-etape">
+          <strong>Entrées</strong>
+          <p>Les données de départ : ce qu'on fournit à l'algorithme (un âge saisi, une liste de notes, un clic…).</p>
+        </div>
+        <div class="flux-fleche" aria-hidden="true">→</div>
+        <div class="flux-etape">
+          <strong>Traitement</strong>
+          <p>Les instructions : calculs, comparaisons, répétitions. C'est le cœur de l'algorithme.</p>
+        </div>
+        <div class="flux-fleche" aria-hidden="true">→</div>
+        <div class="flux-etape">
+          <strong>Sorties</strong>
+          <p>Le résultat produit : un texte affiché, une valeur calculée, un élément de la page modifié.</p>
+        </div>
+      </div>
+      <p>
+        Exemple : pour un <strong>convertisseur euros → dollars</strong>,
+        l'entrée est un montant en euros et le taux de change, le traitement
+        est une multiplication, la sortie est le montant en dollars.
+      </p>
+
+      <h2>Les qualités d'un bon algorithme</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Précis</h3>
+          <p>
+            Chaque instruction n'a qu'une seule interprétation possible.
+            « Ajouter un peu de sel » n'est pas précis ; « ajouter 5 g de sel »
+            l'est.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Fini</h3>
+          <p>
+            Il s'arrête toujours au bout d'un nombre fini d'étapes. « Tant que
+            la pâte n'est pas parfaite, pétrir » risque de ne jamais se
+            terminer.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Ordonné</h3>
+          <p>
+            L'ordre des instructions compte : on ne met pas le gâteau au four
+            avant d'avoir mélangé les ingrédients.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <h4>L'ordinateur ne devine rien</h4>
+        <p>
+          Un humain comprend « prends un verre dans le placard » même si la
+          porte est fermée : il l'ouvre sans qu'on le lui dise. Un ordinateur,
+          non. Il faut <strong>tout</strong> expliciter : ouvrir la porte,
+          prendre le verre, refermer la porte. C'est la principale difficulté
+          quand on débute.
+        </p>
+      </div>
+
+      <h2>Activité : remettre un algorithme dans l'ordre</h2>
+      <div class="ordre" data-ordre>
+        <p>
+          <strong>Publier une photo sur Instagram.</strong> Cliquez sur les
+          étapes dans l'ordre où il faut les exécuter pour construire
+          l'algorithme. Attention : une étape est un intrus, elle ne fait pas
+          partie de l'algorithme. Recliquez sur une étape placée pour la
+          retirer.
+        </p>
+        <div class="ordre-colonnes">
+          <div>
+            <h4>Étapes disponibles</h4>
+            <ul class="ordre-liste ordre-source">
+              <li><button type="button" data-rang="1">Ouvrir l'application</button></li>
+              <li><button type="button" data-rang="2">Appuyer sur « + » (nouvelle publication)</button></li>
+              <li><button type="button" data-rang="3">Choisir la photo dans la galerie</button></li>
+              <li><button type="button" data-rang="4">Appliquer un filtre</button></li>
+              <li><button type="button" data-rang="5">Écrire la légende</button></li>
+              <li><button type="button" data-rang="6">Appuyer sur « Partager »</button></li>
+              <li><button type="button" data-intrus>Recharger la batterie du téléphone</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Votre algorithme</h4>
+            <ol class="ordre-liste ordre-cible"></ol>
+          </div>
+        </div>
+        <p class="ordre-retour" aria-live="polite"></p>
+        <div class="exo-actions">
+          <button type="button" class="btn secondary petit" data-ordre-reset>Recommencer</button>
+        </div>
+      </div>
+      <p>
+        Remarquez que « appliquer un filtre » et « écrire la légende »
+        pourraient aussi s'échanger dans l'application réelle : il existe
+        souvent <strong>plusieurs algorithmes corrects</strong> pour un même
+        problème. Ici, on a choisi de suivre l'ordre des écrans de
+        l'application.
+      </p>
+
+      <h2>Le pseudo-code : réfléchir avant de coder</h2>
+      <p>
+        Pour écrire un algorithme sans se soucier de la syntaxe d'un langage,
+        on utilise le <strong>pseudo-code</strong> : du français structuré avec
+        quelques mots-clés en majuscules. Il n'est pas exécutable, mais il se
+        traduit ensuite presque mot pour mot en JavaScript, en Python ou en
+        PHP.
+      </p>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>ALGORITHME Conversion
+VARIABLES euros, dollars : réels
+DÉBUT
+  euros ← 50
+  dollars ← euros × 1.08
+  AFFICHER dollars
+FIN</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>// Conversion
+let euros = 50;
+let dollars = euros * 1.08;
+console.log(dollars);</code></pre>
+        </div>
+      </div>
+      <p>Quelques conventions que l'on retrouvera tout au long du parcours :</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Pseudo-code</th>
+              <th>JavaScript</th>
+              <th>Rôle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>x ← 5</code></td>
+              <td><code>x = 5;</code></td>
+              <td>Affectation : ranger 5 dans la variable <code>x</code>.</td>
+            </tr>
+            <tr>
+              <td><code>AFFICHER x</code></td>
+              <td><code>console.log(x);</code></td>
+              <td>Sortie : montrer une valeur (ici dans la console).</td>
+            </tr>
+            <tr>
+              <td><code>LIRE x</code></td>
+              <td><code>x = prompt("…");</code></td>
+              <td>Entrée : demander une valeur à l'utilisateur·rice.</td>
+            </tr>
+            <tr>
+              <td><code>// commentaire</code></td>
+              <td><code>// commentaire</code></td>
+              <td>Note pour les humains, ignorée par l'ordinateur.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Où s'exécute le JavaScript ?</h2>
+      <p>
+        Dans ces pages, les zones « À vous de jouer » exécutent votre code et
+        affichent le résultat de <code>console.log()</code> juste en dessous.
+        Dans un vrai projet, ce même résultat apparaît dans la
+        <strong>console des outils de développement</strong> du navigateur
+        (<kbd>F12</kbd> puis onglet <em>Console</em>), comme vu dans le TD
+        <a href="../page2.html">Premières pages JavaScript</a>.
+      </p>
+      <div class="essai" data-essai>
+        <textarea>// Modifiez le montant, puis cliquez sur « Exécuter »
+let euros = 50;
+let dollars = euros * 1.08;
+console.log(dollars);
+console.log("Bonjour MMI !");</textarea>
+      </div>
+
+      <div class="quiz">
+        <p class="quiz-question">
+          Laquelle de ces instructions est assez précise pour un ordinateur ?
+        </p>
+        <div class="quiz-choix">
+          <button type="button">Afficher un message si l'utilisateur a l'air jeune.</button>
+          <button type="button">Répéter l'animation assez longtemps.</button>
+          <button type="button" data-bon>Si l'âge saisi est inférieur à 18, afficher « Accès refusé ».</button>
+          <button type="button">Mettre une couleur sympa en fond.</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          Exactement : « inférieur à 18 » est une comparaison que l'ordinateur
+          sait évaluer. « L'air jeune », « assez longtemps » ou « sympa » sont
+          des jugements humains : il faudrait les traduire en règles chiffrées.
+        </p>
+      </div>
+
+      <h2>La méthode en 4 étapes</h2>
+      <ol>
+        <li><strong>Comprendre</strong> le problème : quelles sont les entrées ? quelle sortie attend-on ?</li>
+        <li><strong>Résoudre à la main</strong> un exemple concret, sur papier.</li>
+        <li><strong>Écrire le pseudo-code</strong> en généralisant ce que vous avez fait à la main.</li>
+        <li><strong>Traduire en JavaScript</strong> et tester avec plusieurs valeurs, y compris les cas limites (0, valeur négative, liste vide…).</li>
+      </ol>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="index.html">← Accueil</a>
+        <a class="btn" href="variables.html">Chapitre 2 : les variables →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+  </body>
+</html>

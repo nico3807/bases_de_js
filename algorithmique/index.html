@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithmique - Les bases · BUT MMI 1</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="index">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">BUT MMI 1 · R1.12 Développement Web</p>
+      <h1>Les bases de l'algorithmique</h1>
+      <p class="lede">
+        Avant d'écrire du JavaScript, il faut savoir <strong>quoi</strong> dire
+        à l'ordinateur. L'algorithmique, c'est l'art de découper un problème en
+        étapes simples, précises et dans le bon ordre. Ces pages vous font
+        découvrir les briques de base que l'on retrouve dans tous les langages.
+      </p>
+
+      <div class="grid cols-3" style="margin-top: 1.8rem">
+        <div class="card">
+          <p class="eyebrow">Pourquoi en MMI ?</p>
+          <p>
+            Un carrousel d'images, un quiz, un panier d'achat, un mini-jeu :
+            derrière chaque interaction d'un site se cache un algorithme. Le
+            savoir le concevoir, c'est ne plus dépendre d'un code copié-collé.
+          </p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Comment ?</p>
+          <p>
+            Chaque notion est présentée deux fois : en
+            <strong>pseudo-code</strong> (du français structuré, pour
+            réfléchir) puis en <strong>JavaScript</strong> (pour que
+            l'ordinateur l'exécute).
+          </p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Outils</p>
+          <p>
+            Tout se fait dans ces pages : un
+            <strong>exécuteur pas à pas</strong> pour voir le programme
+            tourner ligne par ligne, et des <strong>zones de code</strong> à
+            modifier et exécuter directement.
+          </p>
+        </div>
+      </div>
+
+      <h2>Le parcours</h2>
+      <p>
+        Suivez les chapitres dans l'ordre : chacun s'appuie sur le précédent.
+        Chaque chapitre se termine par un lien vers les exercices
+        correspondants.
+      </p>
+      <ul class="timeline">
+        <li>
+          <span
+            ><strong><a href="algorithme.html">1. Penser comme un algorithme</a></strong>
+            - Qu'est-ce qu'un algorithme ? Entrées, traitement, sorties, et
+            pourquoi l'ordinateur a besoin d'instructions sans
+            ambiguïté.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="variables.html">2. Variables et types</a></strong>
+            - Ranger des valeurs dans des « boîtes », les calculer, les
+            modifier. Nombres, textes et booléens.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="conditions.html">3. Les conditions</a></strong> -
+            Faire des choix : <code>SI … ALORS … SINON</code>, comparaisons et
+            opérateurs logiques ET / OU / NON.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="boucles.html">4. Les boucles</a></strong> -
+            Répéter sans recopier : <code>POUR</code> quand on connaît le nombre
+            de tours, <code>TANT QUE</code> sinon.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="tableaux.html">5. Les tableaux</a></strong> -
+            Manipuler une liste de valeurs et les algorithmes classiques :
+            somme, moyenne, maximum, recherche.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="fonctions.html">6. Les fonctions</a></strong> -
+            Découper un programme en sous-programmes réutilisables, avec des
+            paramètres et une valeur de retour.</span
+          >
+        </li>
+        <li>
+          <span
+            ><strong><a href="exercices.html">Exercices</a></strong> - 18
+            exercices corrigés automatiquement, du plus simple au défi.</span
+          >
+        </li>
+      </ul>
+
+      <h2>Objectifs</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Savoir-faire technique</h3>
+          <ul>
+            <li>Déclarer, affecter et afficher une variable.</li>
+            <li>Écrire une condition simple et une condition multiple.</li>
+            <li>Choisir entre une boucle <code>for</code> et une boucle <code>while</code>.</li>
+            <li>Parcourir un tableau pour calculer une somme, un maximum, un compte.</li>
+            <li>Écrire une fonction avec paramètres et <code>return</code>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Façon de penser</h3>
+          <ul>
+            <li>Décrire un problème en étapes avant de toucher au clavier.</li>
+            <li>
+              « Jouer l'ordinateur » : exécuter un algorithme à la main, en
+              suivant la valeur de chaque variable.
+            </li>
+            <li>Tester son programme avec plusieurs valeurs, y compris les cas limites.</li>
+            <li>Lire un message d'erreur au lieu de le fuir.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout info" style="margin-top: 2rem">
+        <h4>Comment travailler avec ces pages</h4>
+        <p>
+          Les blocs <strong>« Exécution pas à pas »</strong> se pilotent avec
+          le bouton <em>Suivant ▶</em> : la ligne jaune est celle qui vient
+          d'être exécutée, les boîtes surlignées sont les variables qui
+          viennent de changer. Prenez le temps de <strong>prédire</strong> ce
+          qui va se passer avant chaque clic.
+        </p>
+        <p>
+          Les blocs <strong>« À vous de jouer »</strong> sont de vraies zones
+          de code : modifiez-les, puis cliquez sur <em>▶ Exécuter</em> (ou
+          <kbd>Ctrl</kbd>+<kbd>Entrée</kbd>). Ce que le programme écrit avec
+          <code>console.log()</code> s'affiche en dessous.
+        </p>
+      </div>
+
+      <div class="callout warn">
+        <h4>Le bon réflexe</h4>
+        <p>
+          Un algorithme se prépare <strong>sur papier</strong> (ou en
+          pseudo-code) avant d'être codé. Si vous ne savez pas expliquer en
+          français ce que votre programme doit faire, JavaScript ne vous
+          aidera pas : il fera exactement ce que vous lui dites, pas ce que
+          vous pensiez lui dire.
+        </p>
+      </div>
+
+      <nav class="suite" aria-label="Suite du parcours">
+        <a class="btn" href="algorithme.html">Commencer : penser comme un algorithme →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

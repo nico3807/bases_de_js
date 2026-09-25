@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables et types - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="variables">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 2</p>
+      <h1>Les variables : des boîtes étiquetées</h1>
+      <p class="lede">
+        Un programme a besoin de mémoriser des informations : un score, un
+        prénom, le nombre d'articles dans un panier. Pour cela, on utilise des
+        variables.
+      </p>
+
+      <h2>Une variable, c'est une boîte</h2>
+      <div class="card">
+        <p>
+          Imaginez la mémoire de l'ordinateur comme une étagère remplie de
+          boîtes. Une <strong>variable</strong> est une boîte qui porte une
+          <strong>étiquette</strong> (son <strong>nom</strong>) et qui contient
+          une <strong>valeur</strong>. On peut à tout moment regarder ce qu'il
+          y a dans la boîte, ou remplacer son contenu.
+        </p>
+        <div class="boites" aria-hidden="true">
+          <div class="boite">
+            <div class="boite-valeur">"Léa"</div>
+            <span class="boite-nom">prenom</span>
+          </div>
+          <div class="boite">
+            <div class="boite-valeur">19</div>
+            <span class="boite-nom">age</span>
+          </div>
+          <div class="boite">
+            <div class="boite-valeur">true</div>
+            <span class="boite-nom">estConnecte</span>
+          </div>
+        </div>
+        <p>
+          Une boîte ne contient qu'<strong>une seule valeur à la fois</strong>
+          : y ranger une nouvelle valeur <strong>écrase</strong> l'ancienne.
+        </p>
+      </div>
+
+      <h2>Déclarer et affecter</h2>
+      <p>
+        <strong>Déclarer</strong> une variable, c'est créer la boîte.
+        <strong>Affecter</strong> une valeur, c'est la ranger dedans. En
+        JavaScript, on déclare avec le mot-clé <code>let</code> (ou
+        <code>const</code> pour une valeur qui ne changera jamais).
+      </p>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>VARIABLES score : entier
+DÉBUT
+  score ← 0
+  score ← score + 10
+  AFFICHER score
+FIN</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>let score = 0;
+score = score + 10;
+console.log(score); // 10</code></pre>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <h4>Le signe = ne veut pas dire « égal »</h4>
+        <p>
+          En mathématiques, <code>score = score + 10</code> est absurde. En
+          programmation, le <code>=</code> est une <strong>affectation</strong>
+          et se lit de <strong>droite à gauche</strong> : « calcule
+          <code>score + 10</code>, puis range le résultat dans
+          <code>score</code> ». C'est pourquoi le pseudo-code utilise une
+          flèche <code>←</code>. Pour <strong>comparer</strong> deux valeurs,
+          JavaScript utilise <code>===</code> (voir le chapitre suivant).
+        </p>
+      </div>
+
+      <h3>Bien nommer ses variables</h3>
+      <ul>
+        <li>
+          Un nom <strong>parlant</strong> : <code>prixTotal</code> plutôt que
+          <code>x</code> ou <code>pt</code>. Vous vous relirez dans trois
+          semaines, votre binôme aussi.
+        </li>
+        <li>
+          Convention JavaScript : le <strong>camelCase</strong>
+          (<code>nombreDeLikes</code>, <code>estConnecte</code>).
+        </li>
+        <li>
+          Pas d'espace, pas d'accent, pas de tiret, et le nom ne commence pas
+          par un chiffre.
+        </li>
+        <li>
+          JavaScript distingue majuscules et minuscules : <code>age</code> et
+          <code>Age</code> sont deux boîtes différentes.
+        </li>
+      </ul>
+
+      <h2>Les types de valeurs</h2>
+      <p>
+        Chaque valeur a un <strong>type</strong>, qui détermine ce que l'on
+        peut faire avec :
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Exemples</th>
+              <th>Utilisation typique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Nombre</strong> (<code>number</code>)</td>
+              <td><code>42</code>, <code>-3</code>, <code>19.99</code></td>
+              <td>Scores, prix, positions, tailles en pixels.</td>
+            </tr>
+            <tr>
+              <td><strong>Chaîne de caractères</strong> (<code>string</code>)</td>
+              <td><code>"Bonjour"</code>, <code>'MMI'</code>, <code>"42"</code></td>
+              <td>Textes : prénoms, messages, contenu d'un champ de formulaire.</td>
+            </tr>
+            <tr>
+              <td><strong>Booléen</strong> (<code>boolean</code>)</td>
+              <td><code>true</code>, <code>false</code></td>
+              <td>Un état vrai / faux : connecté ou non, menu ouvert ou fermé.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Les opérations</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Sur les nombres</h3>
+          <ul>
+            <li><code>+</code> <code>-</code> <code>*</code> <code>/</code> : les quatre opérations.</li>
+            <li>
+              <code>%</code> (modulo) : le <strong>reste</strong> de la
+              division entière. <code>17 % 5</code> vaut <code>2</code>. Très
+              utile pour savoir si un nombre est pair (<code>n % 2</code> vaut
+              0).
+            </li>
+            <li><code>Math.floor(7.8)</code> : arrondi à l'entier inférieur (7).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Sur les chaînes</h3>
+          <ul>
+            <li>
+              <code>+</code> <strong>colle</strong> (concatène) deux textes :
+              <code>"Hello" + " MMI"</code> donne <code>"Hello MMI"</code>.
+            </li>
+            <li><code>texte.length</code> : le nombre de caractères.</li>
+            <li><code>texte.toUpperCase()</code> : le texte en majuscules.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <h4>Piège classique : "5" + 3</h4>
+        <p>
+          Si l'une des deux valeurs est une chaîne, <code>+</code> colle au
+          lieu d'additionner : <code>"5" + 3</code> donne <code>"53"</code>.
+          C'est exactement ce qui arrive avec <code>prompt()</code>, qui
+          renvoie <strong>toujours</strong> une chaîne. D'où le
+          <code>parseInt()</code> vu dans le TD
+          <a href="../page4.html">Variables, calculs et interaction</a>.
+        </p>
+      </div>
+
+      <div class="essai" data-essai data-titre="Testez les types et les opérations">
+        <textarea>let prenom = "Léa";
+let age = 19;
+
+console.log("Bonjour " + prenom + " !");
+console.log("Dans 10 ans, tu auras " + (age + 10) + " ans.");
+console.log(17 % 5);
+console.log("5" + 3);
+console.log(typeof prenom, typeof age, typeof true);</textarea>
+      </div>
+      <p>
+        Essayez de retirer les parenthèses autour de <code>age + 10</code> :
+        que se passe-t-il, et pourquoi ?
+      </p>
+
+      <h2>Exécution pas à pas : échanger deux variables</h2>
+      <p>
+        Problème classique : on veut échanger le contenu de <code>a</code> et
+        <code>b</code>. Écrire <code>a = b;</code> puis <code>b = a;</code> ne
+        marche pas : dès la première ligne, l'ancienne valeur de
+        <code>a</code> est écrasée et perdue. Comme pour échanger le contenu
+        de deux verres, il faut un <strong>troisième récipient</strong>.
+      </p>
+      <div id="trace-echange"></div>
+
+      <div class="quiz">
+        <p class="quiz-question">Que vaut <code>x</code> à la fin de ce programme ?</p>
+        <pre><code>let x = 4;
+let y = x * 2;
+x = y + 1;
+y = 0;</code></pre>
+        <div class="quiz-choix">
+          <button type="button">4</button>
+          <button type="button">1</button>
+          <button type="button" data-bon>9</button>
+          <button type="button">0</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          <code>y</code> reçoit 4 × 2 = 8, puis <code>x</code> reçoit 8 + 1 =
+          9. Modifier <code>y</code> ensuite ne change pas <code>x</code> :
+          l'affectation a <strong>copié</strong> une valeur, elle n'a pas créé
+          de lien entre les deux boîtes.
+        </p>
+      </div>
+
+      <div class="quiz">
+        <p class="quiz-question">
+          Qu'affiche <code>console.log("Total : " + 2 + 3);</code> ?
+        </p>
+        <div class="quiz-choix">
+          <button type="button">Total : 5</button>
+          <button type="button" data-bon>Total : 23</button>
+          <button type="button">Une erreur</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          Le calcul se fait de gauche à droite : <code>"Total : " + 2</code>
+          donne la chaîne <code>"Total : 2"</code>, à laquelle on colle
+          <code>3</code>. Pour obtenir 5, il faut des parenthèses :
+          <code>"Total : " + (2 + 3)</code>.
+        </p>
+      </div>
+
+      <div class="callout ok">
+        <h4>À retenir</h4>
+        <ul>
+          <li>Une variable = un nom + une valeur. On la déclare une fois avec <code>let</code>.</li>
+          <li><code>=</code> range une valeur, de droite à gauche. La nouvelle valeur écrase l'ancienne.</li>
+          <li>Trois types de base : nombre, chaîne, booléen. <code>+</code> additionne les nombres mais colle les chaînes.</li>
+        </ul>
+      </div>
+      <p>
+        Entraînez-vous : <a href="exercices.html#exo-1">exercices 1 à 3</a>.
+      </p>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="algorithme.html">← Penser comme un algorithme</a>
+        <a class="btn" href="conditions.html">Chapitre 3 : les conditions →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/trace.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/pages/variables.js"></script>
+  </body>
+</html>

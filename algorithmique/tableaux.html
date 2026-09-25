@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les tableaux - Algorithmique</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="tableaux">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Algorithmique - Les bases
+          <small>Penser, décomposer, coder en JavaScript</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" data-nav="index">Accueil</a>
+          <a href="algorithme.html" data-nav="algorithme">Algorithme</a>
+          <a href="variables.html" data-nav="variables">Variables</a>
+          <a href="conditions.html" data-nav="conditions">Conditions</a>
+          <a href="boucles.html" data-nav="boucles">Boucles</a>
+          <a href="tableaux.html" data-nav="tableaux">Tableaux</a>
+          <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
+          <a href="exercices.html" data-nav="exercices">Exercices</a>
+          <a href="memo.html" data-nav="memo">Mémo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">Chapitre 5</p>
+      <h1>Les tableaux : des listes de valeurs</h1>
+      <p class="lede">
+        Une galerie de 30 photos, les notes d'une promo, les articles d'un
+        panier : créer une variable par valeur serait ingérable. Un tableau
+        range toutes ces valeurs dans une seule variable, en les numérotant.
+      </p>
+
+      <h2>Un tableau, c'est une rangée de cases numérotées</h2>
+      <div class="card">
+        <pre><code>let notes = [12, 8, 15, 9];</code></pre>
+        <div class="trace-tableau" style="margin: 1rem 0" aria-hidden="true">
+          <div class="trace-case"><div>12</div><small>0</small></div>
+          <div class="trace-case"><div>8</div><small>1</small></div>
+          <div class="trace-case"><div>15</div><small>2</small></div>
+          <div class="trace-case"><div>9</div><small>3</small></div>
+        </div>
+        <ul>
+          <li>On écrit un tableau entre <strong>crochets</strong>, valeurs séparées par des virgules.</li>
+          <li>
+            Chaque case a un numéro, son <strong>indice</strong>, qui
+            <strong>commence à 0</strong>. La première note est
+            <code>notes[0]</code>, la deuxième <code>notes[1]</code>…
+          </li>
+          <li>
+            <code>notes.length</code> donne le <strong>nombre de cases</strong>
+            (ici 4). La dernière case est donc
+            <code>notes[notes.length - 1]</code>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>notes ← [12, 8, 15, 9]
+AFFICHER notes[0]        // 12
+notes[1] ← 10            // remplace le 8
+AJOUTER 14 À LA FIN DE notes
+AFFICHER TAILLE(notes)   // 5</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>let notes = [12, 8, 15, 9];
+console.log(notes[0]);      // 12
+notes[1] = 10;              // remplace le 8
+notes.push(14);             // ajoute à la fin
+console.log(notes.length);  // 5</code></pre>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <h4>Le décalage de 1</h4>
+        <p>
+          Un tableau de 4 cases a les indices 0, 1, 2 et 3.
+          <code>notes[4]</code> n'existe pas : JavaScript renvoie
+          <code>undefined</code> sans erreur, ce qui rend le bug discret.
+          C'est l'erreur la plus fréquente avec les tableaux, dans tous les
+          langages.
+        </p>
+      </div>
+
+      <h2>Parcourir un tableau</h2>
+      <p>
+        Pour traiter chaque case, on combine un tableau et une boucle
+        <code>for</code> : le compteur <code>i</code> sert d'indice et va de
+        <code>0</code> à <code>length - 1</code>. C'est <strong>la</strong>
+        boucle à connaître par cœur :
+      </p>
+      <div class="duo">
+        <div class="duo-a">
+          <h4>Pseudo-code</h4>
+          <pre><code>POUR i DE 0 À TAILLE(notes) - 1 FAIRE
+  AFFICHER notes[i]
+FIN POUR</code></pre>
+        </div>
+        <div class="duo-b">
+          <h4>JavaScript</h4>
+          <pre><code>for (let i = 0; i &lt; notes.length; i++) {
+  console.log(notes[i]);
+}</code></pre>
+        </div>
+      </div>
+
+      <h2>Les algorithmes classiques</h2>
+      <p>
+        Quatre schémas reviennent sans cesse. Ils ont tous la même structure :
+        une variable préparée <strong>avant</strong> la boucle, mise à jour
+        <strong>pendant</strong>, utilisée <strong>après</strong>.
+      </p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Somme et moyenne</h3>
+          <pre><code>let somme = 0;
+for (let i = 0; i &lt; notes.length; i++) {
+  somme = somme + notes[i];
+}
+let moyenne = somme / notes.length;</code></pre>
+        </div>
+        <div class="card">
+          <h3>Compter</h3>
+          <pre><code>let nbReussites = 0;
+for (let i = 0; i &lt; notes.length; i++) {
+  if (notes[i] &gt;= 10) {
+    nbReussites = nbReussites + 1;
+  }
+}</code></pre>
+        </div>
+      </div>
+
+      <h3>Chercher le maximum</h3>
+      <p>
+        Comment trouveriez-vous la meilleure note d'une copie à l'autre, sans
+        tout voir d'un coup ? On retient la meilleure note <strong>vue
+        jusqu'ici</strong>, et on la remplace chaque fois qu'on trouve mieux.
+        Au départ, la « meilleure vue jusqu'ici » est simplement la première.
+      </p>
+      <div id="trace-max"></div>
+
+      <div class="quiz">
+        <p class="quiz-question">
+          Pourquoi initialise-t-on <code>max</code> avec <code>notes[0]</code>
+          plutôt qu'avec <code>0</code> ?
+        </p>
+        <div class="quiz-choix">
+          <button type="button">Parce que c'est plus rapide.</button>
+          <button type="button" data-bon>Parce que si toutes les valeurs étaient négatives, le maximum trouvé serait 0, une valeur qui n'est même pas dans le tableau.</button>
+          <button type="button">Ça ne change rien, les deux sont toujours équivalents.</button>
+        </div>
+        <p class="quiz-explication" hidden>
+          Avec des températures comme <code>[-5, -2, -9]</code>, partir de 0
+          donnerait un maximum de 0. Partir de la première case garantit que
+          le résultat est toujours une valeur réelle du tableau. C'est un
+          <strong>cas limite</strong>, à penser systématiquement quand on
+          teste son code.
+        </p>
+      </div>
+
+      <h3>Rechercher une valeur</h3>
+      <p>
+        Pour savoir si un élément est présent, on parcourt le tableau
+        <strong>jusqu'à le trouver</strong>. Inutile de continuer une fois
+        trouvé : on utilise un <code>while</code> avec une double condition,
+        et un <strong>booléen</strong> qui mémorise si on a trouvé.
+      </p>
+      <div id="trace-recherche"></div>
+
+      <div class="essai" data-essai data-titre="À vous de jouer : un panier d'achat">
+        <textarea>let prix = [12.5, 30, 8, 49.9];
+
+let total = 0;
+for (let i = 0; i < prix.length; i++) {
+  total = total + prix[i];
+}
+console.log("Total : " + total + " €");
+console.log("Nombre d'articles : " + prix.length);
+
+// 1. Ajoutez un article à 15 € avec prix.push(15) AVANT la boucle.
+// 2. Affichez aussi le prix de l'article le plus cher.</textarea>
+      </div>
+
+      <div class="callout ok">
+        <h4>À retenir</h4>
+        <ul>
+          <li>Les indices commencent à 0 ; le dernier est <code>length - 1</code>.</li>
+          <li>Parcours : <code>for (let i = 0; i &lt; tab.length; i++)</code>, et <code>tab[i]</code> dans la boucle.</li>
+          <li>Somme, compteur, maximum, recherche : une variable avant, une mise à jour pendant, un résultat après.</li>
+        </ul>
+      </div>
+      <p>Entraînez-vous : <a href="exercices.html#exo-12">exercices 12 à 14</a>.</p>
+
+      <nav class="suite" aria-label="Navigation entre chapitres">
+        <a class="btn secondary" href="boucles.html">← Les boucles</a>
+        <a class="btn" href="fonctions.html">Chapitre 6 : les fonctions →</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
+      <a href="../index.html">Retour au TD Bases du JavaScript</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/trace.js"></script>
+    <script src="js/bac-a-sable.js"></script>
+    <script src="js/pages/tableaux.js"></script>
+  </body>
+</html>
