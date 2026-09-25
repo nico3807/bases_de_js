@@ -1185,3 +1185,9 @@ footer a {
   background: #1c2333;
   padding: 0.5rem;
 }
+/* Image à fond transparent et texte foncé : fond blanc pour qu'elle reste
+   lisible en mode sombre. */
+.diagram.fond-clair img {
+  background: #ffffff;
+  padding: 0.5rem;
+}
