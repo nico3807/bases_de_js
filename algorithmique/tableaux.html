@@ -168,8 +168,10 @@ for (let i = 0; i &lt; notes.length; i++) {
           <button type="button">Ça ne change rien, les deux sont toujours équivalents.</button>
         </div>
         <p class="quiz-explication" hidden>
-          Avec des températures comme <code>[-5, -2, -9]</code>, partir de 0
-          donnerait un maximum de 0. Partir de la première case garantit que
+          Avec des notes sur 20, partir de 0 fonctionne par chance : toutes
+          les valeurs sont positives. Mais dès que les valeurs peuvent être
+          négatives, le programme répond faux : avec des températures comme
+          <code>[-5, -2, -9]</code>, partir de 0 donnerait un maximum de 0. Partir de la première case garantit que
           le résultat est toujours une valeur réelle du tableau. C'est un
           <strong>cas limite</strong>, à penser systématiquement quand on
           teste son code.
