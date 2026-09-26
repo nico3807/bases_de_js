@@ -1,241 +1,217 @@
-.back-to-menu {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 15px;
-  border-top: 1px solid #ddd;
-}
-.back-to-menu a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff; /* Bleu standard */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.2s;
-}
-.back-to-menu a:hover {
-  background-color: #0056b3; /* Bleu MMI pour le survol */
-}
-.exemple-menu {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 15px;
-  border-top: 1px solid #ddd;
-}
-.exemple-menu a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #024b05;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.2s;
-}
-.exemple-menu a:hover {
-  background-color: #048234; /* pour le survol */
-}
-.menu-buttons {
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre les boutons horizontalement */
-  gap: 20px; /* Espace entre les deux boutons */
-  margin-top: 20px; /* Optionnel : espace au-dessus */
+/* ============================================================
+   TD - Bases du JavaScript (BUT MMI 1)
+   Même charte que la partie Algorithmique : on importe sa feuille de style
+   (couleurs, mode sombre, en-tête, boutons, encadrés, tableaux…) plutôt que
+   d'en garder une copie qui divergerait. Ce fichier ne contient que les
+   blocs propres au TD.
+   ============================================================ */
+
+@import url('../../algorithmique/css/style.css');
+
+/* ---------- Sections et séparateurs ---------- */
+
+main hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.2rem 0;
 }
 
-/* Styles de base pour la lisibilité */
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+main section > h2:first-child {
+  margin-top: 0;
+}
+
+main li {
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Exemples de code ---------- */
+
+.code-example {
+  margin: 0.8rem 0 1.2rem;
+}
+.code-example pre {
   margin: 0;
-  padding: 20px;
-  background-color: #f4f4f4;
-  color: #333;
 }
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Quelques exemples alignent plusieurs <code> hors d'un <pre> : on les
+   présente comme un bloc de code. */
+.code-example > code {
+  display: inline-block;
+  margin: 0.15rem 0;
 }
-page1,
-page2,
-page3 {
-  color: #0056b3; /* Bleu MMI */
-  border-bottom: 2px solid #eee;
-  padding-bottom: 5px;
-  margin-top: 20px;
+
+/* ---------- Encadré « note » ---------- */
+
+.note {
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  background: var(--warn-bg);
+  border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--border));
 }
-page1 {
-  text-align: center;
+.note > :last-child {
+  margin-bottom: 0;
 }
+.note strong:first-child {
+  color: var(--warn);
+}
+
+/* ---------- Figures et captures d'écran ---------- */
+
 .figure {
   text-align: center;
-  margin: 20px 0;
+  margin: 1.5rem auto;
 }
 .figure img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
 }
 .figure figcaption {
-  margin-top: 10px;
-  font-style: italic;
-  color: #666;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center !important;
 }
+
+/* ---------- Bouton « Exemple » (ouvre une fenêtre) ---------- */
+
+.exemple-menu {
+  margin: 1rem 0;
+}
+.exemple-menu a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  background: var(--ok);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.exemple-menu a::before {
+  content: '▶ ';
+}
+.exemple-menu a:hover {
+  background: color-mix(in srgb, var(--ok) 80%, #000);
+  color: #fff;
+}
+
+/* ---------- Listes mises en valeur ---------- */
+
 .extension-list {
   list-style: none;
   padding-left: 0;
+  display: grid;
+  gap: 0.6rem;
 }
 .extension-list li {
-  background-color: #e9ecef;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-left: 5px solid #007bff; /* Bleu VScode */
-  border-radius: 4px;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
 }
 .extension-list strong {
-  color: #007bff;
-}
-.note {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 15px;
-  border-radius: 4px;
-  border: 1px solid #ffeeba;
-  margin-top: 15px;
-}
-/* Styles Généraux et Charte MMI 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa; 
-  color: #343a40;
-}*/
-.header {
-  background-color: #0056b3; /* Bleu MMI principal */
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.header h1 {
-  margin: 0;
-  font-size: 2.5em;
-  letter-spacing: 1px;
-}
-.header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-}
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  color: var(--primary-dark);
 }
 
-/* Styles du Menu de Navigation (Moderne et Élégant) */
-.nav-menu {
-  list-style: none;
-  padding: 0;
+.exercice {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent-b);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.3rem;
+  margin: 1.2rem 0;
+}
+
+/* ---------- Tableaux ---------- */
+
+.table-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
-.nav-menu li {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  overflow: hidden;
-}
-.nav-menu li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-.nav-menu a {
-  text-decoration: none;
-  color: #343a40;
-  display: block;
-  padding: 20px;
-  font-weight: bold;
-  border-left: 5px solid #007bff; /* Barre VScode / Accentuation */
-  transition: background-color 0.2s;
-}
-.nav-menu a:hover {
-  background-color: #f0f8ff; /* Bleu très léger au survol */
-}
-
-/* Titres dans le menu */
-.menu-title {
-  font-size: 1.1em;
+.table-group table {
+  width: 100% !important;
   margin: 0;
-  color: #007bff;
 }
-.menu-subtitle {
-  font-size: 0.9em;
-  font-weight: normal;
-  color: #6c757d;
-  margin-top: 5px;
-}
-
-table {
-  width: 100%; /* Laisser le contrôle de la largeur aux balises HTML */
-  border-collapse: collapse;
-  margin: 15px 0;
-}
-table,
-th,
-td {
-  border: 1px solid #ddd;
-}
-th,
-td {
-  padding: 10px;
-  text-align: center;
-}
-th {
-  background-color: #f2f2f2;
-}
-/* Style pour aligner le tableau à 50% de largeur */
 .table-50 {
   width: 60%;
-  margin-left: auto; /* Centre le tableau */
-  margin-right: auto; /* Centre le tableau */
-}
-/* Style pour aligner les deux tableaux si nécessaire */
-.table-group {
-  display: flex; /* Peut être utile pour un alignement côte à côte, mais ici pour un alignement centré des blocs */
-  flex-direction: column;
-  align-items: center; /* Centre les éléments enfants (les tableaux) */
+  margin-left: auto;
+  margin-right: auto;
 }
 .td-center {
   text-align: center !important;
-  /* !important est utilisé ici pour s'assurer que cette règle surcharge le "text-align: left" général */
 }
 
-/* Style global pour les balises <code> : gras, texte blanc, fond noir, police 14px */
-code {
+/* ---------- Menu du TD ---------- */
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 1.8rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.nav-menu li {
+  margin: 0;
+}
+.nav-menu a {
+  display: block;
+  height: 100%;
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.nav-menu a:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  color: var(--text);
+}
+.menu-title {
+  margin: 0 0 0.3rem;
   font-weight: 700;
-  color: #ffffff;
-  background-color: #000000;
-  font-size: 20px;
-  font-family: monospace;
-  padding: 2px 6px;
-  border-radius: 4px;
+  color: var(--primary-dark);
+  text-align: left !important;
+}
+.menu-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: left !important;
 }
 
-/* Assurer que les <code> à l'intérieur de <pre> conservent leur mise en forme mais adoptent la couleur/fond */
-pre code {
+.ressources {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.ressources a {
   display: inline-block;
-  color: #ffffff;
-  background-color: #000000;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 20px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-weight: 600;
+  text-decoration: none;
+}
+.ressources a::after {
+  content: ' \2197';
+}
+.ressources a:hover {
+  border-color: var(--primary);
 }

@@ -12,10 +12,11 @@ bases_de_js/
 └── td/                 TD - Bases du JavaScript
     ├── index.html      Menu du TD
     ├── page*.html      Les pages du TD
-    ├── css/style.css
+    ├── css/style.css   Blocs propres au TD (importe la charte d'algorithmique)
+    ├── js/main.js      Lien actif dans le menu
     ├── img/            Captures d'écran
     └── exemples/       Fichiers d'exemples et d'exercices
 ```
 
-La page d'accueil réutilise la feuille de style de `algorithmique/` pour
-garder la même charte graphique.
+La page d'accueil et le TD réutilisent la feuille de style de
+`algorithmique/` : une seule charte graphique pour tout le site.

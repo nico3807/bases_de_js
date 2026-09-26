@@ -6,17 +6,29 @@
     <title>
       Interaction DOM : Manipulation des propriétés CSS et Événements
     </title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <h1>
-          ⚙️ Interaction DOM : Manipulation des Propriétés CSS et Événements
-        </h1>
-      </header>
+  <body data-page="page7">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-      <hr />
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >TD - Bases du JavaScript
+          <small>BUT MMI 1 · R1.12 Développement Web</small>
+        </a>
+        <div class="site-nav">
+          <a href="../index.html">Accueil</a>
+          <a href="index.html" data-nav="menu">Menu du TD</a>
+          <a href="../algorithmique/index.html">Algorithmique</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <p class="eyebrow">TD - Bases du JavaScript</p>
+      <h1>⚙️ Interaction DOM : Manipulation des Propriétés CSS et Événements</h1>
 
       <section id="modification-css">
         <h2>1. Modification des Propriétés CSS avec JavaScript</h2>
@@ -233,20 +245,17 @@ alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
         </a>
       </div>
       <hr />
-      <div class="menu-buttons">
-        <div class="back-to-menu">
-          <a href="page6.html">← Partie Précédente (Les fonctions)</a>
-        </div>
-        <div class="back-to-menu">
-          <a href="index.html">↑ Retour au Menu du TD</a>
-        </div>
-      </div>
-      <footer>
-        <p style="text-align: center; font-size: 0.9em; color: #666">
-          © 2025 — BUT MMI Béziers - MAURIN N.<br />
-          R1.12 Développement Web
-        </p>
-      </footer>
-    </div>
+      <nav class="suite" aria-label="Navigation entre les parties">
+        <a class="btn secondary" href="page6.html">← Partie Précédente (Les fonctions)</a>
+        <a class="btn secondary" href="index.html">↑ Retour au Menu du TD</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 — BUT MMI Béziers - MAURIN N. · R1.12 Développement Web ·
+      <a href="../index.html">Accueil du site</a>
+    </footer>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
