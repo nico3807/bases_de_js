@@ -1,148 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bases du JavaScript - Menu TD</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Développement web · BUT MMI 1</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect x=%2728%27 y=%274%27 width=%2744%27 height=%2722%27 rx=%277%27 fill=%27%232f5fd9%27/%3E%3Cpath d=%27M50 26 V38 M50 82 V96%27 stroke=%27%231c2333%27 stroke-width=%277%27/%3E%3Cpath d=%27M50 38 L74 60 L50 82 L26 60 Z%27 fill=%27%23b5560f%27/%3E%3C/svg%3E" />
+    <!-- Même charte que la partie Algorithmique : on réutilise sa feuille de
+         style plutôt que d'en dupliquer une copie qui divergerait. -->
+    <link rel="stylesheet" href="algorithmique/css/style.css" />
   </head>
   <body>
-    <header class="header">
-      <h1>TD - Bases du JavaScript</h1>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <a class="brand" href="index.html"
+          >Développement web - BUT MMI 1
+          <small>R1.12 · IUT de Béziers</small>
+        </a>
+        <div class="site-nav">
+          <a href="index.html" class="active" aria-current="page">Accueil</a>
+          <a href="algorithmique/index.html">Algorithmique</a>
+          <a href="td/index.html">TD JavaScript</a>
+        </div>
+      </nav>
     </header>
 
-    <div class="container">
-      <page2
-        >🧭 Parcourez les différentes parties du TD Bases du Javascript</page2
-      >
-      <hr />
+    <main id="contenu">
+      <p class="eyebrow">BUT MMI 1 · R1.12 Développement Web</p>
+      <h1>Découvrir la programmation avec JavaScript</h1>
+      <p class="lede">
+        Deux parcours complémentaires : d'abord apprendre à
+        <strong>penser</strong> un programme, puis apprendre à l'<strong>écrire</strong>
+        en JavaScript dans une vraie page web.
+      </p>
 
-      <ul class="nav-menu">
+      <div class="grid cols-2" style="margin-top: 1.8rem">
+        <div class="card">
+          <p class="eyebrow">Parcours 1</p>
+          <h2 style="margin-top: 0">🧩 Les bases de l'algorithmique</h2>
+          <p>
+            Variables, conditions, boucles, tableaux et fonctions, présentés en
+            pseudo-code puis en JavaScript. Exécution pas à pas, quiz, zones de
+            code à tester et 18 exercices corrigés automatiquement.
+          </p>
+          <p><a class="btn" href="algorithmique/index.html">Commencer l'algorithmique →</a></p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Parcours 2</p>
+          <h2 style="margin-top: 0">🛠️ TD - Bases du JavaScript</h2>
+          <p>
+            Prise en main de VS Code, premières pages JavaScript, variables,
+            conditions, boucles, fonctions et manipulation du DOM, avec des
+            exemples et des exercices à réaliser dans votre éditeur.
+          </p>
+          <p><a class="btn" href="td/index.html">Ouvrir le TD →</a></p>
+        </div>
+      </div>
+
+      <h2>Par où commencer ?</h2>
+      <ul class="timeline">
         <li>
-          <a href="page1.html">
-            <p class="menu-title">🛠️ Prise en main de VS Code</p>
-            <p class="menu-subtitle">
-              Installation de l'éditeur et des extensions essentielles (Live
-              Server, Prettier).
-            </p>
-          </a>
+          <span
+            ><strong>1. Algorithmique</strong> - Comprendre ce qu'est un
+            algorithme et les briques de base, directement dans le navigateur,
+            sans rien installer.</span
+          >
         </li>
         <li>
-          <a href="page2.html">
-            <p class="menu-title">🚀 Premières pages JavaScript avec VS Code</p>
-            <p class="menu-subtitle">
-              é Création de '<b>index.html</b>', liaison '<b>script.js</b>' et
-              découverte des DevTools.
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page3.html">
-            <p class="menu-title">🎨 Rappel sur le Langage CSS</p>
-            <p class="menu-subtitle">
-              Les trois méthodes d'intégration et l'importance du fichier
-              externe.
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page4.html">
-            <p class="menu-title">🔢 Variables, Calculs et Interaction</p>
-            <p class="menu-subtitle">
-              Déclaration ('<b>let</b>'), '<b>alert()</b>', '<b>prompt()</b>',
-              '<b>parseInt()</b>' et les types de données
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page4_0.html">
-            <p class="menu-title">💾 Les Variables en JavaScript</p>
-            <p class="menu-subtitle">
-              Déclaration, affectation et types de données
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page4_1.html">
-            <p class="menu-title">
-              ⚙️ Les structures conditionnelles et boucles
-            </p>
-            <p class="menu-subtitle">
-              '<b>if</b>', '<b>elseif</b>', '<b>switch</b>'
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page4_2.html">
-            <p class="menu-title">🚦Les boucles de répétition</p>
-            <p class="menu-subtitle">
-              '<b>while</b>', '<b>dowhile</b>', '<b>for</b>'
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page5.html">
-            <p class="menu-title">
-              🧭 Exercice : Menu d’orientation du BUT MMI (Structure switch)
-            </p>
-            <p class="menu-subtitle">
-              Mise en application de la structure '<b>switch</b>' pour un cas
-              d'usage concret.
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page6.html">
-            <p class="menu-title">🔁 Fonctions en JavaScript</p>
-            <p class="menu-subtitle">
-              Caractéristiques et Syntaxe, Arguments et DOM
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="page7.html">
-            <p class="menu-title">
-              ⚙️ Interaction DOM : Manipulation des Propriétés CSS et Événements
-            </p>
-            <p class="menu-subtitle">
-              Modification des Propriétés CSS avec JavaScript
-            </p>
-          </a>
-        </li>
-        <li>
-          <a href="algorithmique/index.html">
-            <p class="menu-title">🧩 Les bases de l'algorithmique</p>
-            <p class="menu-subtitle">
-              Variables, conditions, boucles, tableaux et fonctions : exécution
-              pas à pas et exercices corrigés automatiquement
-            </p>
-          </a>
+          <span
+            ><strong>2. TD Bases du JavaScript</strong> - Installer VS Code et
+            réutiliser ces briques pour rendre une page web
+            interactive.</span
+          >
         </li>
       </ul>
-    </div>
-    <div class="menu-buttons">
-      <div class="back-to-menu">
-        <a
-          href="https://moodle-but.iutbeziers.fr/moodle/pluginfile.php/49996/mod_resource/content/1/TD1-Fiche%20r%C3%A9capitulative_v26.pdf"
-          target="_blank"
-        >
-          Ressource 1 : Fonctions et Concepts JS</a
-        >
+
+      <div class="callout info" style="margin-top: 2rem">
+        <h4>Les deux parcours se répondent</h4>
+        <p>
+          Les pages d'algorithmique renvoient vers les pages du TD qui
+          approfondissent chaque notion, et le mémo d'algorithmique reste utile
+          pendant tout le TD : gardez-le ouvert dans un onglet.
+        </p>
       </div>
-      <div class="back-to-menu">
-        <a
-          href="https://moodle-but.iutbeziers.fr/moodle/pluginfile.php/50008/mod_resource/content/1/Ressource_chemins_js_v26.pdf"
-          target="_blank"
-        >
-          Ressource 2 : Chemins relatifs et absolus en JS</a
-        >
-      </div>
-    </div>
-    <footer>
-      <p style="text-align: center; font-size: 0.9em; color: #666">
-        © 2025 — BUT MMI Béziers - MAURIN N.<br />
-        R1.12 Développement Web
-      </p>
+    </main>
+
+    <footer class="site-footer">
+      BUT MMI 1 · R1.12 Développement Web · IUT de Béziers
     </footer>
   </body>
 </html>

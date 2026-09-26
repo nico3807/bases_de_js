@@ -1,0 +1,217 @@
+/* ============================================================
+   TD - Bases du JavaScript (BUT MMI 1)
+   Même charte que la partie Algorithmique : on importe sa feuille de style
+   (couleurs, mode sombre, en-tête, boutons, encadrés, tableaux…) plutôt que
+   d'en garder une copie qui divergerait. Ce fichier ne contient que les
+   blocs propres au TD.
+   ============================================================ */
+
+@import url('../../algorithmique/css/style.css');
+
+/* ---------- Sections et séparateurs ---------- */
+
+main hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.2rem 0;
+}
+
+main section > h2:first-child {
+  margin-top: 0;
+}
+
+main li {
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Exemples de code ---------- */
+
+.code-example {
+  margin: 0.8rem 0 1.2rem;
+}
+.code-example pre {
+  margin: 0;
+}
+/* Quelques exemples alignent plusieurs <code> hors d'un <pre> : on les
+   présente comme un bloc de code. */
+.code-example > code {
+  display: inline-block;
+  margin: 0.15rem 0;
+}
+
+/* ---------- Encadré « note » ---------- */
+
+.note {
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  background: var(--warn-bg);
+  border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--border));
+}
+.note > :last-child {
+  margin-bottom: 0;
+}
+.note strong:first-child {
+  color: var(--warn);
+}
+
+/* ---------- Figures et captures d'écran ---------- */
+
+.figure {
+  text-align: center;
+  margin: 1.5rem auto;
+}
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+}
+.figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center !important;
+}
+
+/* ---------- Bouton « Exemple » (ouvre une fenêtre) ---------- */
+
+.exemple-menu {
+  margin: 1rem 0;
+}
+.exemple-menu a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  background: var(--ok);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.exemple-menu a::before {
+  content: '▶ ';
+}
+.exemple-menu a:hover {
+  background: color-mix(in srgb, var(--ok) 80%, #000);
+  color: #fff;
+}
+
+/* ---------- Listes mises en valeur ---------- */
+
+.extension-list {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.extension-list li {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
+}
+.extension-list strong {
+  color: var(--primary-dark);
+}
+
+.exercice {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent-b);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.3rem;
+  margin: 1.2rem 0;
+}
+
+/* ---------- Tableaux ---------- */
+
+.table-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.table-group table {
+  width: 100% !important;
+  margin: 0;
+}
+.table-50 {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.td-center {
+  text-align: center !important;
+}
+
+/* ---------- Menu du TD ---------- */
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 1.8rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.nav-menu li {
+  margin: 0;
+}
+.nav-menu a {
+  display: block;
+  height: 100%;
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.nav-menu a:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  color: var(--text);
+}
+.menu-title {
+  margin: 0 0 0.3rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: left !important;
+}
+.menu-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: left !important;
+}
+
+.ressources {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.ressources a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-weight: 600;
+  text-decoration: none;
+}
+.ressources a::after {
+  content: ' \2197';
+}
+.ressources a:hover {
+  border-color: var(--primary);
+}
