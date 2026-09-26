@@ -1191,3 +1191,8 @@ footer a {
   background: #ffffff;
   padding: 0.5rem;
 }
+/* Schéma en hauteur : on limite sa largeur pour qu'il ne prenne pas tout
+   l'écran. */
+.diagram.etroit img {
+  max-width: 540px;
+}
