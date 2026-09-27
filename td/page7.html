@@ -244,7 +244,26 @@ alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
           Exemple
         </a>
       </div>
+
       <hr />
+
+      <section id="exercices" class="exos-td">
+        <h2>✅ Exercices de validation</h2>
+        <p>
+          Vérifiez ce que vous avez compris : chaque exercice est testé
+          automatiquement avec plusieurs valeurs. Les exercices réussis
+          comptent pour votre <strong>certificat PDF</strong> du TD, que vous
+          pouvez télécharger à tout moment.
+        </p>
+        <div class="session-barre">
+          <span id="etudiant-nom" class="session-nom"></span>
+          <span class="progress-text" id="progress-td"></span>
+          <button type="button" class="btn petit" id="ouvrir-certificat">📜 Certificat PDF</button>
+          <button type="button" class="btn secondary petit" id="changer-etudiant">S'identifier</button>
+        </div>
+        <div id="exos-td" data-partie="dom"></div>
+      </section>
+
       <nav class="suite" aria-label="Navigation entre les parties">
         <a class="btn secondary" href="page6.html">← Partie Précédente (Les fonctions)</a>
         <a class="btn secondary" href="index.html">↑ Retour au Menu du TD</a>
@@ -257,5 +276,14 @@ alert(color); // Affiche la couleur calculée (par exemple "rgb(255, 0, 0)")
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="../algorithmique/js/bac-a-sable.js"></script>
+    <script src="../algorithmique/js/vendor/jspdf.umd.min.js"></script>
+    <script src="../algorithmique/js/certificat-logos.js"></script>
+    <script src="../algorithmique/js/certificat.js"></script>
+    <script src="../algorithmique/js/verification.js"></script>
+    <script src="../algorithmique/js/parcours.js"></script>
+    <script src="../algorithmique/js/fiches.js"></script>
+    <script src="js/exercices-td-data.js"></script>
+    <script src="js/exercices-td.js"></script>
   </body>
 </html>

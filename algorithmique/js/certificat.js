@@ -1,10 +1,11 @@
-// Certificat PDF des exercices d'algorithmique (jsPDF).
+// Certificat PDF des exercices (jsPDF), pour l'algorithmique comme pour le
+// TD JavaScript : les textes propres à chaque parcours viennent de opts.appli.
 // Même principe et même mise en page que le certificat du dépôt CCJS
 // (« Exercices JavaScript ») :
 //   - page 1 : logos de part et d'autre du titre, identité de l'étudiant·e,
 //     statistiques et avancement par chapitre ;
 //   - ensuite : l'historique complet des vérifications.
-// Tant que les 18 exercices ne sont pas tous réussis, le document s'intitule
+// Tant que tous les exercices ne sont pas réussis, le document s'intitule
 // « Attestation de parcours » et porte la mention « NON TERMINÉ ».
 
 var Certificat = (function () {
@@ -22,6 +23,7 @@ var Certificat = (function () {
   /*
    * opts = {
    *   prenom, nom,
+   *   appli: { titre, fichier, motsGroupe: ['chapitre', 'chapitres', 'validés'] },
    *   stats: { date, duree, termine, exosReussis, exosTotal, chapitresValides,
    *            chapitresTotal, verifsReussies, verifsTotal, solutionsVues },
    *   chapitres: [{ libelle, reussis, total }],
@@ -33,7 +35,10 @@ var Certificat = (function () {
     var doc = new jsPDF({ unit: 'mm', format: 'a4' });
     var W = 210, H = 297, MARGE = 14;
     var termine = !!opts.stats.termine;
-    var titreAppli = 'Algorithmique - Les bases';
+    var appli = opts.appli || {};
+    var titreAppli = nettoyer(appli.titre || 'Algorithmique - Les bases');
+    var mots = appli.motsGroupe || ['chapitre', 'chapitres', 'validés'];
+    var Mot = function (m) { return m.charAt(0).toUpperCase() + m.slice(1); };
     var prenom = nettoyer(opts.prenom);
     var nom = nettoyer(opts.nom).toUpperCase();
 
@@ -104,7 +109,7 @@ var Certificat = (function () {
     var intro = doc.splitTextToSize(
       termine
         ? 'a terminé avec succès les exercices « ' + titreAppli + ' » (BUT MMI 1, R1.12) : les ' + s.exosTotal +
-          ' exercices des ' + s.chapitresTotal + ' chapitres ont été réussis, chacun vérifié automatiquement ' +
+          ' exercices des ' + s.chapitresTotal + ' ' + mots[1] + ' ont été réussis, chacun vérifié automatiquement ' +
           'sur plusieurs cas de test.'
         : 'a suivi les exercices « ' + titreAppli + ' » (BUT MMI 1, R1.12) et a réussi ' + s.exosReussis +
           ' exercice' + (s.exosReussis > 1 ? 's' : '') + ' sur ' + s.exosTotal + ' à la date d\'édition de ce ' +
@@ -119,7 +124,7 @@ var Certificat = (function () {
       ['Date d\'édition', s.date],
       ['Temps passé', s.duree],
       ['Exercices réussis', s.exosReussis + ' / ' + s.exosTotal],
-      ['Chapitres validés', s.chapitresValides + ' / ' + s.chapitresTotal],
+      [Mot(mots[1]) + ' ' + (mots[2] || 'validés'), s.chapitresValides + ' / ' + s.chapitresTotal],
       ['Vérifications réussies', s.verifsReussies + ' / ' + s.verifsTotal],
       ['Solutions consultées', String(s.solutionsVues)]
     ];
@@ -145,7 +150,7 @@ var Certificat = (function () {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(12);
     doc.setTextColor(30, 30, 60);
-    doc.text('État d\'avancement par chapitre', MARGE, y);
+    doc.text('État d\'avancement par ' + mots[0], MARGE, y);
     y += 6;
     var barX = MARGE + 66, barW = 60, barH = 3.2;
     doc.setFontSize(9.5);
@@ -166,7 +171,7 @@ var Certificat = (function () {
       doc.setFont('helvetica', fini ? 'bold' : 'normal');
       if (fini) doc.setTextColor(22, 130, 60);
       else doc.setTextColor(80, 80, 110);
-      doc.text(c.reussis + '/' + c.total + (fini ? ' — validé' : ''), barX + barW + 4, y);
+      doc.text(c.reussis + '/' + c.total + (fini ? ' — ' + (mots[2] || 'validés').replace(/s$/, '') : ''), barX + barW + 4, y);
       y += 6.2;
     });
 
@@ -218,7 +223,7 @@ var Certificat = (function () {
       doc.text('page ' + p + ' / ' + pages, W - MARGE, H - 9, { align: 'right' });
     }
 
-    doc.save('certificat_algorithmique_' + slug(opts.nom) + '_' + slug(opts.prenom) +
+    doc.save('certificat_' + (appli.fichier || 'algorithmique') + '_' + slug(opts.nom) + '_' + slug(opts.prenom) +
       (termine ? '' : '_non_termine') + '.pdf');
     return { pages: pages };
   }

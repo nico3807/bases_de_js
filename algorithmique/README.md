@@ -27,7 +27,10 @@ algorithmique/
     ├── trace.js           Exécution pas à pas (ligne courante, variables, console)
     ├── bac-a-sable.js     Zones de code exécutables (Web Worker, arrêt des boucles infinies)
     ├── exercices-data.js  Contenu des exercices (consignes, cas de test, solutions)
-    ├── exercices.js       Rendu des exercices, vérification, session étudiant
+    ├── exercices.js       Page Exercices : filtre par chapitre, progression
+    ├── verification.js    Vérification automatique (partagé avec le TD)
+    ├── fiches.js          Fiches d'exercices en accordéon (partagé avec le TD)
+    ├── parcours.js        Identification + certificat PDF (partagé avec le TD)
     ├── certificat.js      Certificat PDF (même principe que le dépôt CCJS)
     ├── certificat-logos.js Logos UM et MMI du certificat, en base64
     ├── vendor/            jsPDF (licence MIT)
