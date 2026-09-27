@@ -215,3 +215,39 @@ main li {
 .ressources a:hover {
   border-color: var(--primary);
 }
+
+/* ---------- Exercices de validation et certificat ---------- */
+
+.exos-td > h2 {
+  margin-top: 0;
+}
+
+.td-progression {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+.td-progression li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.td-progression a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.td-progression span {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.td-progression span.fini {
+  color: var(--ok);
+  font-weight: 700;
+}

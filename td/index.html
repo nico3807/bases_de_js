@@ -95,6 +95,22 @@
         </li>
       </ul>
 
+      <h2>✅ Exercices de validation et certificat</h2>
+      <p>
+        À partir de la partie « Les Variables en JavaScript », chaque page se
+        termine par des exercices vérifiés automatiquement. Identifiez-vous
+        avec votre prénom et votre nom : votre progression est enregistrée à
+        votre nom sur ce poste, et vous pouvez télécharger à tout moment votre
+        <strong>certificat PDF</strong> (mention « NON TERMINÉ » tant que tous
+        les exercices ne sont pas réussis).
+      </p>
+      <div class="session-barre">
+        <span id="etudiant-nom" class="session-nom"></span>
+        <button type="button" class="btn petit" id="ouvrir-certificat">📜 Certificat PDF</button>
+        <button type="button" class="btn secondary petit" id="changer-etudiant">S'identifier</button>
+      </div>
+      <ul class="td-progression" id="td-progression"></ul>
+
       <h2>Ressources</h2>
       <ul class="ressources">
         <li>
@@ -122,5 +138,14 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="../algorithmique/js/bac-a-sable.js"></script>
+    <script src="../algorithmique/js/vendor/jspdf.umd.min.js"></script>
+    <script src="../algorithmique/js/certificat-logos.js"></script>
+    <script src="../algorithmique/js/certificat.js"></script>
+    <script src="../algorithmique/js/verification.js"></script>
+    <script src="../algorithmique/js/parcours.js"></script>
+    <script src="../algorithmique/js/fiches.js"></script>
+    <script src="js/exercices-td-data.js"></script>
+    <script src="js/exercices-td.js"></script>
   </body>
 </html>

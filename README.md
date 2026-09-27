@@ -13,10 +13,19 @@ bases_de_js/
     ├── index.html      Menu du TD
     ├── page*.html      Les pages du TD
     ├── css/style.css   Blocs propres au TD (importe la charte d'algorithmique)
-    ├── js/main.js      Lien actif dans le menu
+    ├── js/main.js      Lien actif dans le menu, boutons indice / solution
+    ├── js/exercices-td*.js  Exercices de validation et certificat PDF
     ├── img/            Captures d'écran
     └── exemples/       Fichiers d'exemples et d'exercices
 ```
 
 La page d'accueil et le TD réutilisent la feuille de style de
 `algorithmique/` : une seule charte graphique pour tout le site.
+
+## Exercices et certificat PDF
+
+Les exercices d'algorithmique et les exercices de validation du TD (à partir
+de « Les Variables en JavaScript ») utilisent le même moteur, dans
+`algorithmique/js/` : bac à sable, vérification automatique, identification
+prénom + nom et certificat PDF (même principe que le dépôt CCJS). Chaque
+parcours a son propre certificat.
