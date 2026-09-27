@@ -26,6 +26,7 @@
           <a href="fonctions.html" data-nav="fonctions">Fonctions</a>
           <a href="exercices.html" data-nav="exercices">Exercices</a>
           <a href="memo.html" data-nav="memo">Mémo</a>
+          <a href="../td/index.html">TD JavaScript</a>
         </div>
       </nav>
     </header>
@@ -39,6 +40,12 @@
         <em>✔ Vérifier</em> : votre programme est testé avec plusieurs
         valeurs de départ, pas seulement celle de l'énoncé.
       </p>
+
+      <div class="session-barre">
+        <span id="etudiant-nom" class="session-nom"></span>
+        <button type="button" class="btn petit" id="ouvrir-certificat">📜 Certificat PDF</button>
+        <button type="button" class="btn secondary petit" id="changer-etudiant">Changer d'étudiant·e</button>
+      </div>
 
       <div class="callout warn">
         <h4>Jouez le jeu</h4>
@@ -69,14 +76,20 @@
       </div>
 
       <div class="callout info">
-        <h4>Votre progression est gardée dans ce navigateur</h4>
+        <h4>Validation : le certificat PDF</h4>
         <p>
-          Les exercices réussis et le code que vous tapez sont mémorisés sur
-          cet ordinateur, dans ce navigateur : vous pouvez fermer la page et
-          reprendre plus tard. Ils ne sont envoyés nulle part.
+          Votre progression, votre code et l'historique de vos vérifications
+          sont enregistrés <strong>à votre nom, sur cet ordinateur</strong>
+          (plusieurs étudiant·es peuvent travailler sur le même poste). Ils ne
+          sont envoyés nulle part.
         </p>
         <p>
-          <button type="button" class="btn secondary petit" id="effacer-progression">Effacer ma progression</button>
+          À la fin de la séance, cliquez sur <strong>📜 Certificat PDF</strong>
+          et déposez le fichier obtenu là où votre enseignant·e le demande.
+          Tant que les 18 exercices ne sont pas réussis, le document porte la
+          mention « NON TERMINÉ ». Un exercice ne compte comme réussi que s'il
+          passe la vérification automatique, et les solutions consultées sont
+          indiquées dans le certificat.
         </p>
       </div>
 
@@ -85,6 +98,44 @@
         <a class="btn" href="memo.html">Le mémo →</a>
       </nav>
     </main>
+
+    <!-- Identification en début de session (comme dans CCJS) -->
+    <div class="fenetre-modale" id="login-modal" hidden>
+      <div class="fenetre" role="dialog" aria-modal="true" aria-labelledby="login-titre">
+        <h2 id="login-titre">👋 Exercices d'algorithmique</h2>
+        <p>
+          Identifiez-vous pour démarrer <strong>votre</strong> session sur ce
+          poste. Votre progression sera enregistrée à votre nom, et votre
+          certificat PDF établi à ce nom.
+        </p>
+        <label for="login-prenom">Prénom</label>
+        <input id="login-prenom" type="text" autocomplete="off" maxlength="40" />
+        <label for="login-nom">Nom</label>
+        <input id="login-nom" type="text" autocomplete="off" maxlength="40" />
+        <p id="login-erreur" class="fenetre-erreur" role="alert"></p>
+        <button type="button" class="btn" id="login-demarrer">▶ Démarrer la session</button>
+        <div id="login-sessions" hidden>
+          <p class="login-sessions-titre">
+            Sessions déjà enregistrées sur ce poste — cliquez pour reprendre :
+          </p>
+          <div id="login-liste"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificat PDF -->
+    <div class="fenetre-modale" id="cert-modal" hidden>
+      <div class="fenetre" role="dialog" aria-modal="true" aria-labelledby="cert-titre">
+        <h2 id="cert-titre">🏆 Certificat de réussite</h2>
+        <p id="cert-texte"></p>
+        <p id="cert-identite" class="cert-identite"></p>
+        <p id="cert-erreur" class="fenetre-erreur" role="alert"></p>
+        <div class="fenetre-boutons">
+          <button type="button" class="btn" id="cert-generer">📜 Télécharger le certificat PDF</button>
+          <button type="button" class="btn secondary" id="cert-annuler">Plus tard</button>
+        </div>
+      </div>
+    </div>
 
     <footer class="site-footer">
       Algorithmique - Les bases · BUT MMI 1 · R1.12 Développement Web ·
@@ -95,6 +146,9 @@
     <script src="js/main.js"></script>
     <script src="js/bac-a-sable.js"></script>
     <script src="js/exercices-data.js"></script>
+    <script src="js/vendor/jspdf.umd.min.js"></script>
+    <script src="js/certificat-logos.js"></script>
+    <script src="js/certificat.js"></script>
     <script src="js/exercices.js"></script>
   </body>
 </html>

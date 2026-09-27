@@ -27,9 +27,23 @@ algorithmique/
     ├── trace.js           Exécution pas à pas (ligne courante, variables, console)
     ├── bac-a-sable.js     Zones de code exécutables (Web Worker, arrêt des boucles infinies)
     ├── exercices-data.js  Contenu des exercices (consignes, cas de test, solutions)
-    ├── exercices.js       Rendu des exercices, vérification, progression
+    ├── exercices.js       Rendu des exercices, vérification, session étudiant
+    ├── certificat.js      Certificat PDF (même principe que le dépôt CCJS)
+    ├── certificat-logos.js Logos UM et MMI du certificat, en base64
+    ├── vendor/            jsPDF (licence MIT)
     └── pages/             Déroulé des exécutions pas à pas de chaque chapitre
 ```
 
 Pour modifier ou ajouter un exercice, il suffit d'éditer
 `js/exercices-data.js` (le format est décrit en tête du fichier).
+
+## Validation par certificat PDF
+
+Comme dans le dépôt CCJS (« Exercices JavaScript »), la page d'exercices
+demande le prénom et le nom de l'étudiant·e au démarrage. La progression, le
+code tapé, l'historique des vérifications et le temps passé sont enregistrés
+à son nom sur le poste (`localStorage`, clés `algo-mmi:…`). Le bouton
+« 📜 Certificat PDF » produit une attestation (mention « NON TERMINÉ ») ou,
+une fois les 18 exercices réussis, un certificat de réussite. Un exercice ne
+compte comme réussi que s'il passe la vérification automatique ; les solutions
+consultées sont indiquées dans le PDF.
