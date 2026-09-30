@@ -5,6 +5,7 @@
 //   - page 1 : logos de part et d'autre du titre, identité de l'étudiant·e,
 //     statistiques et avancement par chapitre ;
 //   - ensuite : l'historique complet des vérifications.
+// Le PDF est verrouillé : impression seule, aucune modification possible.
 // Tant que tous les exercices ne sont pas réussis, le document s'intitule
 // « Attestation de parcours » et porte la mention « NON TERMINÉ ».
 
@@ -13,6 +14,12 @@ var Certificat = (function () {
   // les autres caractères (émojis, symboles…).
   function nettoyer(s) {
     return String(s).replace(/[^\x20-\x7EÀ-ÿŒœ€«»'’‘…–—°]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function motDePasseAleatoire() {
+    var octets = new Uint8Array(24);
+    (window.crypto || window.msCrypto).getRandomValues(octets);
+    return Array.prototype.map.call(octets, function (o) { return ('0' + o.toString(16)).slice(-2); }).join('');
   }
 
   function slug(s) {
@@ -32,7 +39,20 @@ var Certificat = (function () {
    */
   function generer(opts) {
     var jsPDF = window.jspdf.jsPDF;
-    var doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    // Document verrouillé : il s'ouvre sans mot de passe, mais seule
+    // l'impression est autorisée (ni modification, ni ajout de texte ou
+    // d'annotation, ni remplissage de formulaire, ni copie). Le mot de passe
+    // « propriétaire » qui lèverait ces restrictions est tiré au hasard et
+    // n'est conservé nulle part : personne ne le connaît.
+    var doc = new jsPDF({
+      unit: 'mm',
+      format: 'a4',
+      encryption: {
+        userPassword: '',
+        ownerPassword: motDePasseAleatoire(),
+        userPermissions: ['print']
+      }
+    });
     var W = 210, H = 297, MARGE = 14;
     var termine = !!opts.stats.termine;
     var appli = opts.appli || {};
@@ -221,6 +241,7 @@ var Certificat = (function () {
       doc.text(titreAppli + ' — document généré automatiquement par la page d\'exercices' +
         (termine ? '' : ' (parcours en cours)'), MARGE, H - 9);
       doc.text('page ' + p + ' / ' + pages, W - MARGE, H - 9, { align: 'right' });
+      doc.text('Document protégé : modification interdite', W / 2, H - 12.5, { align: 'center' });
     }
 
     doc.save('certificat_' + (appli.fichier || 'algorithmique') + '_' + slug(opts.nom) + '_' + slug(opts.prenom) +
