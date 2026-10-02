@@ -6,6 +6,7 @@ Ouvrir `index.html` à la racine (double-clic ou Live Server).
 ```
 bases_de_js/
 ├── index.html          Page d'accueil : liens vers les deux parcours
+├── img/                Logos IUT et MMI de l'en-tête de l'accueil
 ├── algorithmique/      Les bases de l'algorithmique (voir son README)
 │   ├── *.html
 │   ├── css/  img/  js/
@@ -15,7 +16,7 @@ bases_de_js/
     ├── css/style.css   Blocs propres au TD (importe la charte d'algorithmique)
     ├── js/main.js      Lien actif dans le menu, boutons indice / solution
     ├── js/exercices-td*.js  Exercices de validation et certificat PDF
-    ├── img/            Captures d'écran
+    ├── img/            Captures d'écran, logos IUT et MMI de l'en-tête
     └── exemples/       Fichiers d'exemples et d'exercices
 ```
 
