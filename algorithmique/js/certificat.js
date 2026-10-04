@@ -208,7 +208,7 @@ var Certificat = (function () {
 
     doc.setFont('courier', 'normal');
     doc.setFontSize(8);
-    var hLigne = 3.8, bas = H - 16, largeurNum = 11;
+    var hLigne = 3.8, bas = H - 22, largeurNum = 11;
     if (!opts.historique.length) {
       doc.setTextColor(120, 120, 140);
       doc.text('(aucune vérification pour le moment)', MARGE + largeurNum, y);
@@ -232,6 +232,8 @@ var Certificat = (function () {
     });
 
     /* ---------- Pieds de page ---------- */
+    // Deux lignes au-dessus du cadre intérieur (tracé à H - 9,5) : écrites
+    // plus bas, elles reposaient sur le trait.
     var pages = doc.getNumberOfPages();
     for (var p = 1; p <= pages; p++) {
       doc.setPage(p);
@@ -239,9 +241,9 @@ var Certificat = (function () {
       doc.setFontSize(8);
       doc.setTextColor(140, 140, 160);
       doc.text(titreAppli + ' — document généré automatiquement par la page d\'exercices' +
-        (termine ? '' : ' (parcours en cours)'), MARGE, H - 9);
-      doc.text('page ' + p + ' / ' + pages, W - MARGE, H - 9, { align: 'right' });
-      doc.text('Document protégé : modification interdite', W / 2, H - 12.5, { align: 'center' });
+        (termine ? '' : ' (parcours en cours)'), MARGE, H - 13);
+      doc.text('page ' + p + ' / ' + pages, W - MARGE, H - 13, { align: 'right' });
+      doc.text('Document protégé : modification interdite', W / 2, H - 17, { align: 'center' });
     }
 
     doc.save('certificat_' + (appli.fichier || 'algorithmique') + '_' + slug(opts.nom) + '_' + slug(opts.prenom) +
