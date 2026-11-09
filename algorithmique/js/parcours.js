@@ -248,7 +248,6 @@ function Parcours(config) {
       ok: ok,
       reussis: reussis,
       total: total,
-      solutionVue: !!memoire.solutions[exo.id],
       t: Date.now()
     });
     if (memoire.historique.length > MAX_HISTORIQUE) {
@@ -260,11 +259,6 @@ function Parcours(config) {
     if (!etaitTermine && nbFaits() === EXOS.length) setTimeout(ouvrirCertificat, 1200);
   }
 
-  function noterSolution(id) {
-    if (!etudiant || memoire.solutions[id]) return;
-    memoire.solutions[id] = true;
-    enregistrer();
-  }
 
   function sauverCode(id, code) {
     if (!etudiant) return;
@@ -304,8 +298,7 @@ function Parcours(config) {
         exercice: 'Ex. ' + h.id + ' ' + exo.titre,
         chapitre: libelleGroupe(exo[config.cleGroupe]),
         ok: h.ok,
-        cas: h.reussis + '/' + h.total,
-        solutionVue: h.solutionVue
+        cas: h.reussis + '/' + h.total
       };
     });
     return {
@@ -321,8 +314,7 @@ function Parcours(config) {
         chapitresValides: groupes.filter(function (g) { return g.reussis >= g.total; }).length,
         chapitresTotal: groupes.length,
         verifsReussies: memoire.historique.filter(function (h) { return h.ok; }).length,
-        verifsTotal: memoire.historique.length,
-        solutionsVues: Object.keys(memoire.solutions).length
+        verifsTotal: memoire.historique.length
       },
       chapitres: groupes,
       historique: historique
@@ -400,7 +392,6 @@ function Parcours(config) {
     code: function (id) { return memoire ? memoire.codes[id] : undefined; },
     nbFaits: nbFaits,
     noterTentative: noterTentative,
-    noterSolution: noterSolution,
     sauverCode: sauverCode,
     exigerEtudiant: exigerEtudiant,
     ouvrirCertificat: ouvrirCertificat

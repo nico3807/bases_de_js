@@ -26,7 +26,7 @@ algorithmique/
     ├── main.js            Menu actif, quiz, remise en ordre, table de vérité
     ├── trace.js           Exécution pas à pas (ligne courante, variables, console)
     ├── bac-a-sable.js     Zones de code exécutables (Web Worker, arrêt des boucles infinies)
-    ├── exercices-data.js  Contenu des exercices (consignes, cas de test, solutions)
+    ├── exercices-data.js  Contenu des exercices (consignes, cas de test, solutions de référence non affichées)
     ├── exercices.js       Page Exercices : filtre par chapitre, progression
     ├── verification.js    Vérification automatique (partagé avec le TD)
     ├── fiches.js          Fiches d'exercices en accordéon (partagé avec le TD)
@@ -48,5 +48,6 @@ code tapé, l'historique des vérifications et le temps passé sont enregistrés
 à son nom sur le poste (`localStorage`, clés `algo-mmi:…`). Le bouton
 « 📜 Certificat PDF » produit une attestation (mention « NON TERMINÉ ») ou,
 une fois les 18 exercices réussis, un certificat de réussite. Un exercice ne
-compte comme réussi que s'il passe la vérification automatique ; les solutions
-consultées sont indiquées dans le PDF.
+compte comme réussi que s'il passe la vérification automatique. Les solutions
+de référence (`solution` dans les données) servent aux tests et ne sont pas
+affichées aux étudiant·es.

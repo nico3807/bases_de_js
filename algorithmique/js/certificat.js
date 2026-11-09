@@ -32,9 +32,9 @@ var Certificat = (function () {
    *   prenom, nom,
    *   appli: { titre, fichier, motsGroupe: ['chapitre', 'chapitres', 'validés'] },
    *   stats: { date, duree, termine, exosReussis, exosTotal, chapitresValides,
-   *            chapitresTotal, verifsReussies, verifsTotal, solutionsVues },
+   *            chapitresTotal, verifsReussies, verifsTotal },
    *   chapitres: [{ libelle, reussis, total }],
-   *   historique: [{ date, exercice, chapitre, ok, cas, solutionVue }]
+   *   historique: [{ date, exercice, chapitre, ok, cas }]
    * }
    */
   function generer(opts) {
@@ -145,8 +145,7 @@ var Certificat = (function () {
       ['Temps passé', s.duree],
       ['Exercices réussis', s.exosReussis + ' / ' + s.exosTotal],
       [Mot(mots[1]) + ' ' + (mots[2] || 'validés'), s.chapitresValides + ' / ' + s.chapitresTotal],
-      ['Vérifications réussies', s.verifsReussies + ' / ' + s.verifsTotal],
-      ['Solutions consultées', String(s.solutionsVues)]
+      ['Vérifications réussies', s.verifsReussies + ' / ' + s.verifsTotal]
     ];
     doc.setFontSize(10.5);
     lignes.forEach(function (l) {
@@ -215,7 +214,7 @@ var Certificat = (function () {
     }
     opts.historique.forEach(function (h, i) {
       var texte = '[' + h.date + '] ' + h.exercice + ' (' + h.chapitre + ') : ' +
-        (h.ok ? 'réussi' : 'raté') + ' - ' + h.cas + ' cas' + (h.solutionVue ? ' - solution consultée' : '');
+        (h.ok ? 'réussi' : 'raté') + ' - ' + h.cas + ' cas';
       var coupe = doc.splitTextToSize(nettoyer(texte), W - 2 * MARGE - largeurNum);
       if (y + coupe.length * hLigne > bas) {
         doc.addPage();
