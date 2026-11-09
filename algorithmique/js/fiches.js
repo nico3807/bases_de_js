@@ -1,6 +1,7 @@
 // Fiches d'exercices en accordéon (même principe que les fiches de scénarios
-// du TP R3.14) : consigne, bac à sable, vérification automatique, indice et
-// solution. Partagé par les exercices d'algorithmique et ceux du TD.
+// du TP R3.14) : consigne, bac à sable, vérification automatique et indice.
+// Partagé par les exercices d'algorithmique et ceux du TD. Les solutions ne
+// sont pas affichées aux étudiant·es.
 //
 // Fiches.afficher(conteneur, exercices, parcours, {
 //   libelle: function (exo) { return 'Boucles'; },  // étiquette de droite
@@ -28,11 +29,8 @@ var Fiches = (function () {
         '<div class="essai"></div>' +
         '<div class="exo-actions">' +
           '<button type="button" class="btn secondary petit" data-affiche="indice-' + exo.id + '">💡 Un indice</button>' +
-          '<button type="button" class="btn secondary petit voir-solution" data-affiche="solution-' + exo.id + '">Voir une solution</button>' +
         '</div>' +
         '<div class="indice" id="indice-' + exo.id + '" hidden><strong>Indice —</strong> ' + exo.indice + '</div>' +
-        '<div class="solution" id="solution-' + exo.id + '" hidden><strong>Une solution possible</strong> (il en existe d\'autres !)' +
-          '<pre><code>' + echapper(exo.solution) + '</code></pre></div>' +
       '</div>' +
     '</div>';
   }
@@ -85,11 +83,6 @@ var Fiches = (function () {
       });
       essai.zone.addEventListener('input', function () { parcours.sauverCode(exo.id, essai.zone.value); });
 
-      // Consulter la solution reste permis, mais c'est noté dans le
-      // certificat : l'enseignant·e sait ainsi comment l'exercice a été réussi.
-      carte.querySelector('.voir-solution').addEventListener('click', function () {
-        parcours.noterSolution(exo.id);
-      });
 
       if (parcours.estFait(exo.id)) marquer(carte);
       carte.querySelector('.exo-head').addEventListener('click', function () {

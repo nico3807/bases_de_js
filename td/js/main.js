@@ -11,7 +11,7 @@
   });
 })();
 
-// Boutons « Un indice » / « Voir une solution » des exercices de validation
+// Bouton « Un indice » des exercices de validation
 // (même comportement que dans la partie Algorithmique).
 document.addEventListener('click', function (evt) {
   var bouton = evt.target.closest('[data-affiche]');
