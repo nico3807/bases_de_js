@@ -56,6 +56,9 @@
     onChangement: construire
   });
 
+  // Validation en séance : une question chronométrée par exercice réussi.
+  Seance(parcours, { titre: 'Algorithmique - Les bases', questionPour: QuestionsCode.pour });
+
   filtres.forEach(function (bouton) {
     bouton.addEventListener('click', function () {
       filtres.forEach(function (b) {

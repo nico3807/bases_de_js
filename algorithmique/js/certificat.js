@@ -4,6 +4,8 @@
 // (« Exercices JavaScript ») :
 //   - page 1 : logos de part et d'autre du titre, identité de l'étudiant·e,
 //     statistiques et avancement par chapitre ;
+//   - indices de démarche : part des exercices écrits au clavier (seuil de
+//     80 %), validation en séance, puis détail par exercice ;
 //   - ensuite : l'historique complet des vérifications.
 // Le PDF est verrouillé : impression seule, aucune modification possible.
 // Tant que tous les exercices ne sont pas réussis, le document s'intitule
@@ -34,7 +36,11 @@ var Certificat = (function () {
    *   stats: { date, duree, termine, exosReussis, exosTotal, chapitresValides,
    *            chapitresTotal, verifsReussies, verifsTotal },
    *   chapitres: [{ libelle, reussis, total }],
-   *   historique: [{ date, exercice, chapitre, ok, cas }]
+   *   historique: [{ date, exercice, chapitre, ok, cas }],
+   *   indices: { mesures, nonMesures, auClavier, part, seuil, seuilAtteint, partColleeMax },
+   *   seance: null | { date, code, reussies, total, terminee },
+   *   exercices: [{ id, titre, fait, mesure: null | { clavier, partCollee, duree,
+   *                 rapide, essais, sorties }, seance: null | { ok, sortie, temps } }]
    * }
    */
   function generer(opts) {
@@ -147,6 +153,17 @@ var Certificat = (function () {
       [Mot(mots[1]) + ' ' + (mots[2] || 'validés'), s.chapitresValides + ' / ' + s.chapitresTotal],
       ['Vérifications réussies', s.verifsReussies + ' / ' + s.verifsTotal]
     ];
+    var ind = opts.indices, sea = opts.seance;
+    if (ind) {
+      lignes.push(['Écrits au clavier', ind.mesures
+        ? ind.auClavier + ' / ' + ind.mesures + ' (' + Math.round(ind.part * 100) + ' %) — seuil de ' +
+          Math.round(ind.seuil * 100) + ' % ' + (ind.seuilAtteint ? 'atteint' : 'NON ATTEINT')
+        : 'non mesuré']);
+      lignes.push(['Explications en séance', sea
+        ? sea.reussies + ' / ' + sea.total + (sea.terminee ? '' : ' (interrompue)')
+        : 'non réalisée']);
+      if (sea) lignes.push(['Code de séance', '« ' + sea.code + ' », le ' + sea.date]);
+    }
     doc.setFontSize(10.5);
     lignes.forEach(function (l) {
       doc.setFont('helvetica', 'bold');
@@ -155,6 +172,10 @@ var Certificat = (function () {
       doc.setFont('helvetica', l[0] === 'Statut' ? 'bold' : 'normal');
       if (l[0] === 'Statut') {
         if (termine) doc.setTextColor(30, 140, 60);
+        else doc.setTextColor(200, 40, 40);
+      } else if (l[0] === 'Écrits au clavier' && ind && ind.mesures) {
+        doc.setFont('helvetica', 'bold');
+        if (ind.seuilAtteint) doc.setTextColor(30, 140, 60);
         else doc.setTextColor(200, 40, 40);
       } else doc.setTextColor(40, 40, 60);
       doc.text(nettoyer(l[1]), W / 2 + 2, y);
@@ -194,8 +215,87 @@ var Certificat = (function () {
       y += 6.2;
     });
 
+    var bas = H - 22;
+    function nouvellePageSi(hauteur) {
+      if (y + hauteur > bas) {
+        doc.addPage();
+        y = 18;
+      }
+    }
+
+    /* ---------- Indices de démarche par exercice ---------- */
+    if (opts.exercices) {
+      y += 4;
+      nouvellePageSi(30);
+      doc.setDrawColor(180, 180, 200);
+      doc.line(MARGE + 6, y, W - MARGE - 6, y);
+      y += 7;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(12);
+      doc.setTextColor(30, 30, 60);
+      doc.text('Indices de démarche par exercice', MARGE, y);
+      y += 6;
+      var col = { num: MARGE, titre: MARGE + 9, saisie: MARGE + 82, temps: MARGE + 112, essais: MARGE + 133,
+        sorties: MARGE + 147, seance: MARGE + 162 };
+      doc.setFont('courier', 'bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(90, 90, 120);
+      [['num', 'N°'], ['titre', 'Exercice'], ['saisie', 'Saisie'], ['temps', 'Temps'], ['essais', 'Essais'],
+        ['sorties', 'Sorties'], ['seance', 'Séance']].forEach(function (c) { doc.text(c[1], col[c[0]], y); });
+      y += 4;
+      doc.setFont('courier', 'normal');
+      opts.exercices.forEach(function (e) {
+        nouvellePageSi(4);
+        var m = e.mesure;
+        var titre = nettoyer(e.titre);
+        if (titre.length > 34) titre = titre.slice(0, 33) + '…';
+        doc.setTextColor(60, 60, 80);
+        doc.text(String(e.id), col.num, y);
+        doc.text(titre, col.titre, y);
+        if (!e.fait) {
+          doc.setTextColor(150, 150, 170);
+          doc.text('non réussi', col.saisie, y);
+        } else if (!m) {
+          doc.setTextColor(150, 150, 170);
+          doc.text('non mesuré', col.saisie, y);
+        } else {
+          if (m.clavier) doc.setTextColor(30, 120, 60);
+          else doc.setTextColor(190, 50, 50);
+          doc.text(m.clavier ? 'clavier' : 'collé ' + Math.round(m.partCollee * 100) + ' %', col.saisie, y);
+          var sec = m.duree === null ? null : Math.round(m.duree / 1000);
+          if (m.rapide) doc.setTextColor(200, 110, 20);
+          else doc.setTextColor(60, 60, 80);
+          doc.text(sec === null ? '?' : Math.floor(sec / 60) + ' min ' + String(sec % 60).padStart(2, '0') + (m.rapide ? ' !' : ''), col.temps, y);
+          doc.setTextColor(60, 60, 80);
+          doc.text(String(m.essais), col.essais, y);
+          if (m.sorties) doc.setTextColor(200, 110, 20);
+          doc.text(String(m.sorties), col.sorties, y);
+        }
+        var sc = e.seance;
+        if (!sc) { doc.setTextColor(150, 150, 170); doc.text('—', col.seance, y); }
+        else if (sc.ok) { doc.setTextColor(30, 120, 60); doc.text('validée', col.seance, y); }
+        else { doc.setTextColor(190, 50, 50); doc.text(sc.sortie ? 'sortie' : 'échouée', col.seance, y); }
+        y += 3.8;
+      });
+      y += 2;
+      doc.setFont('helvetica', 'italic');
+      doc.setFontSize(7.5);
+      doc.setTextColor(110, 110, 130);
+      var legende = doc.splitTextToSize(nettoyer(
+        'Saisie : « clavier » si moins de ' + Math.round((ind ? ind.partColleeMax : 0.2) * 100) + ' % du code ajouté a été ' +
+        'collé depuis l\'extérieur de la page (un copier-coller interne à la page ne compte pas) ; « non mesuré » ' +
+        'pour un exercice réussi avant la mise en place de la mesure. Temps : de la première frappe à la réussite ; ' +
+        '« ! » si très rapide pour le niveau de l\'exercice. Sorties : changements d\'onglet ou de fenêtre pendant ' +
+        'l\'exercice. Séance : question chronométrée en présentiel. Ce sont des indices de démarche, pas une preuve.'),
+        W - 2 * MARGE);
+      nouvellePageSi(legende.length * 3.4);
+      doc.text(legende, MARGE, y);
+      y += legende.length * 3.4;
+    }
+
     /* ---------- Historique ---------- */
     y += 4;
+    nouvellePageSi(20);
     doc.setDrawColor(180, 180, 200);
     doc.line(MARGE + 6, y, W - MARGE - 6, y);
     y += 7;
@@ -207,7 +307,7 @@ var Certificat = (function () {
 
     doc.setFont('courier', 'normal');
     doc.setFontSize(8);
-    var hLigne = 3.8, bas = H - 22, largeurNum = 11;
+    var hLigne = 3.8, largeurNum = 11;
     if (!opts.historique.length) {
       doc.setTextColor(120, 120, 140);
       doc.text('(aucune vérification pour le moment)', MARGE + largeurNum, y);

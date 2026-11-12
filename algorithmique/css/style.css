@@ -1354,3 +1354,57 @@ footer a {
     height: 36px;
   }
 }
+
+/* ---------- Validation en séance ---------- */
+
+.fenetre-large {
+  width: min(720px, 100%);
+}
+.fenetre ul {
+  padding-left: 1.2rem;
+}
+.seance-progression {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+.seance-temps {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--code-bg);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.seance-temps div {
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+  transition: width 0.2s linear;
+}
+.seance-question {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.seance-code {
+  margin: 0.6rem 0 0.4rem;
+}
+.seance-code summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--primary-dark);
+}
+.seance-code pre {
+  max-height: 14rem;
+  overflow: auto;
+  margin: 0.5rem 0 0;
+}
+.seance-alerte {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: var(--warn-bg);
+  border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--border));
+}
+.seance-score {
+  font-size: 1.1rem;
+}

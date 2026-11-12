@@ -86,5 +86,5 @@ var Verification = (function () {
       });
   }
 
-  return { verifier: verifier, echapper: echapper };
+  return { verifier: verifier, echapper: echapper, nettoyer: nettoyer, decrireValeurs: decrireValeurs };
 })();

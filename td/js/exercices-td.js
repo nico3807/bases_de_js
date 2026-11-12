@@ -59,5 +59,10 @@
     onChangement: construire
   });
 
+  // Validation en séance (bouton sur le menu du TD).
+  if (typeof Seance !== 'undefined') {
+    Seance(parcours, { titre: 'TD - Bases du JavaScript', questionPour: QuestionsCode.pour });
+  }
+
   construire();
 })();
