@@ -18,6 +18,13 @@
 //
 // Les éléments #etudiant-nom, #ouvrir-certificat et #changer-etudiant, s'ils
 // existent dans la page, sont reliés automatiquement.
+//
+// Indices de démarche (affichés dans le certificat, jamais envoyés) : pour
+// chaque exercice, suivreSaisie(zone, id) mesure ce qui est tapé au clavier
+// et ce qui est collé depuis l'extérieur de la page (un copier-coller interne
+// à la page ne compte pas), le temps mis, le nombre d'essais et les sorties
+// de la page. Ces mesures sont figées à la première réussite. La validation
+// en séance (js/seance.js) est enregistrée ici aussi.
 
 function Parcours(config) {
   var PREFIXE = config.prefixe;
@@ -27,8 +34,19 @@ function Parcours(config) {
   var EXOS = config.exercices;
   var mots = config.motsGroupe || ['chapitre', 'chapitres', 'validés'];
 
+  // Un exercice est « écrit au clavier » si moins de 20 % du code ajouté a
+  // été collé depuis l'extérieur de la page ; seuil du parcours : 80 % des
+  // exercices mesurés.
+  var PART_COLLEE_MAX = 0.2;
+  var SEUIL_CLAVIER = 0.8;
+
+  function echapper(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
   var etudiant = null; // { prenom, nom }
-  var memoire = null;  // { faits, codes, solutions, historique, duree }
+  var memoire = null;  // { faits, codes, solutions, historique, duree, saisie, mesures, validation }
   var debutSession = Date.now();
   var enAttente = null; // action à reprendre après l'identification
 
@@ -61,7 +79,10 @@ function Parcours(config) {
       codes: m.codes || {},
       solutions: m.solutions || {},
       historique: m.historique || [],
-      duree: m.duree || 0
+      duree: m.duree || 0,
+      saisie: m.saisie || {},     // en cours : { tape, colle, debut, essais, sorties }
+      mesures: m.mesures || {},   // figées à la 1re réussite
+      validation: m.validation || null
     };
   }
 
@@ -96,7 +117,7 @@ function Parcours(config) {
     var html =
       '<div class="fenetre-modale" id="login-modal" hidden>' +
         '<div class="fenetre" role="dialog" aria-modal="true" aria-labelledby="login-titre">' +
-          '<h2 id="login-titre">👋 ' + Verification.echapper(config.titre) + '</h2>' +
+          '<h2 id="login-titre">👋 ' + echapper(config.titre) + '</h2>' +
           '<p>Identifiez-vous pour démarrer <strong>votre</strong> session sur ce poste. ' +
           'Votre progression sera enregistrée à votre nom, et votre certificat PDF établi à ce nom.</p>' +
           '<label for="login-prenom">Prénom</label>' +
@@ -187,6 +208,7 @@ function Parcours(config) {
     }
     etudiant = { prenom: prenom, nom: nom };
     memoire = charger();
+    fusionnerTampon();
     debutSession = Date.now();
     if (config.memoriserOnglet) ecrireJSON(sessionStorage, COURANT, etudiant);
     fenetreLogin.hidden = true;
@@ -238,11 +260,136 @@ function Parcours(config) {
     });
   }
 
+  // ---------- Mesure de la saisie ----------
+
+  // Textes copiés DANS la page (un exemple du cours, son propre code) :
+  // les recoller ne compte pas comme un collage extérieur.
+  var copiesInternes = [];
+  var tampon = {};          // saisie faite avant l'identification
+  var exoActif = null;      // dernier exercice dont l'éditeur a eu le focus
+  var dejaSorti = false;
+
+  function compacter(t) {
+    return String(t || '').replace(/\s+/g, '');
+  }
+
+  // On garde à la fois la sélection d'un éditeur et celle du reste de la page.
+  function noterCopie() {
+    var a = document.activeElement, textes = [];
+    if (a && (a.tagName === 'TEXTAREA' || a.tagName === 'INPUT') && typeof a.selectionStart === 'number') {
+      textes.push(a.value.slice(a.selectionStart, a.selectionEnd));
+    }
+    if (window.getSelection) textes.push(String(window.getSelection()));
+    textes.map(compacter).forEach(function (t) {
+      if (!t) return;
+      copiesInternes.push(t);
+      if (copiesInternes.length > 50) copiesInternes.shift();
+    });
+  }
+  document.addEventListener('copy', noterCopie);
+  document.addEventListener('cut', noterCopie);
+
+  function estInterne(texte) {
+    var c = compacter(texte);
+    return !!c && copiesInternes.some(function (x) { return x.indexOf(c) >= 0; });
+  }
+
+  function saisieDe(id) {
+    var lot = memoire ? memoire.saisie : tampon;
+    if (!lot[id]) lot[id] = { tape: 0, colle: 0, debut: 0, essais: 0, sorties: 0 };
+    return lot[id];
+  }
+
+  function fusionnerTampon() {
+    Object.keys(tampon).forEach(function (id) {
+      if (memoire.faits[id] || memoire.mesures[id]) return;
+      var t = tampon[id], s = saisieDe(id);
+      s.tape += t.tape;
+      s.colle += t.colle;
+      s.sorties += t.sorties;
+      if (t.debut && (!s.debut || t.debut < s.debut)) s.debut = t.debut;
+    });
+    tampon = {};
+  }
+
+  function persister() {
+    if (etudiant) ecrireJSON(localStorage, PREFIXE + idEtudiant(etudiant), memoire);
+  }
+
+  // Une sortie de la page (autre onglet, autre fenêtre) pendant qu'un
+  // exercice non encore réussi est en cours.
+  function sortie() {
+    if (dejaSorti || exoActif === null) return;
+    if (memoire && memoire.faits[exoActif]) return;
+    dejaSorti = true;
+    saisieDe(exoActif).sorties++;
+    persister();
+  }
+  // Un clic dans un aperçu (iframe) de la page fait aussi perdre le focus à
+  // la fenêtre : ce n'est pas une sortie.
+  window.addEventListener('blur', function () {
+    setTimeout(function () {
+      var a = document.activeElement;
+      if (a && a.tagName === 'IFRAME') return;
+      sortie();
+    }, 0);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) sortie();
+    else dejaSorti = false;
+  });
+  window.addEventListener('focus', function () { dejaSorti = false; });
+
+  function suivreSaisie(zone, id) {
+    var collageEnCours = null;
+    zone.addEventListener('focus', function () { exoActif = id; });
+    zone.addEventListener('paste', function (evt) {
+      var texte = (evt.clipboardData || window.clipboardData).getData('text') || '';
+      collageEnCours = { n: compacter(texte).length, interne: estInterne(texte) };
+    });
+    zone.addEventListener('drop', function (evt) {
+      var texte = evt.dataTransfer ? evt.dataTransfer.getData('text') : '';
+      collageEnCours = { n: compacter(texte).length, interne: estInterne(texte) };
+    });
+    zone.addEventListener('input', function (evt) {
+      exoActif = id;
+      if (memoire && memoire.faits[id]) return; // mesures déjà figées
+      var s = saisieDe(id);
+      var type = evt.inputType || '';
+      if (type === 'insertFromPaste' || type === 'insertFromDrop' || (collageEnCours && !type)) {
+        if (collageEnCours) {
+          if (collageEnCours.interne) s.tape += collageEnCours.n;
+          else s.colle += collageEnCours.n;
+        }
+      } else if (type.indexOf('insert') === 0) {
+        s.tape += compacter(evt.data).length;
+      }
+      collageEnCours = null;
+      if ((s.tape || s.colle) && !s.debut) s.debut = Date.now();
+      persister();
+    });
+  }
+
   // ---------- Suivi des exercices ----------
 
   function noterTentative(exo, ok, reussis, total) {
     if (!etudiant) return;
     var etaitTermine = nbFaits() === EXOS.length;
+    var dejaFait = !!memoire.faits[exo.id];
+    if (!dejaFait) {
+      var s = saisieDe(exo.id);
+      s.essais++;
+      if (ok && !memoire.mesures[exo.id]) {
+        // Mesures figées à la première réussite. Sans aucune saisie mesurée
+        // (code repris d'avant la mise en place de la mesure), « non mesuré ».
+        var ajoute = s.tape + s.colle;
+        memoire.mesures[exo.id] = ajoute > 0
+          ? { tape: s.tape, colle: s.colle, part: s.colle / ajoute,
+              duree: s.debut ? Date.now() - s.debut : null,
+              essais: s.essais, sorties: s.sorties, t: Date.now() }
+          : { nonMesure: true, essais: s.essais, sorties: s.sorties, t: Date.now() };
+      }
+    }
     memoire.historique.push({
       id: exo.id,
       ok: ok,
@@ -301,10 +448,51 @@ function Parcours(config) {
         cas: h.reussis + '/' + h.total
       };
     });
+    // Indices de démarche, par exercice réussi.
+    var exercices = EXOS.map(function (e) {
+      var m = memoire.mesures[e.id];
+      var r = memoire.validation && memoire.validation.reponses[e.id];
+      return {
+        id: e.id,
+        titre: e.titre,
+        niveau: e.niveau,
+        fait: !!memoire.faits[e.id],
+        mesure: m && !m.nonMesure ? {
+          clavier: m.part < PART_COLLEE_MAX,
+          partCollee: m.part,
+          duree: m.duree,
+          rapide: m.duree !== null && m.duree < [0, 30000, 60000, 90000][e.niveau || 1],
+          essais: m.essais,
+          sorties: m.sorties
+        } : null,
+        seance: r ? { ok: r.ok, sortie: !!r.sortie, temps: r.temps } : null
+      };
+    });
+    var mesures = exercices.filter(function (x) { return x.fait && x.mesure; });
+    var auClavier = mesures.filter(function (x) { return x.mesure.clavier; }).length;
+    var v = memoire.validation;
     return {
       prenom: etudiant.prenom,
       nom: etudiant.nom,
       appli: { titre: config.titre, fichier: config.fichier, motsGroupe: mots },
+      exercices: exercices,
+      indices: {
+        mesures: mesures.length,
+        nonMesures: exercices.filter(function (x) { return x.fait && !x.mesure; }).length,
+        auClavier: auClavier,
+        part: mesures.length ? auClavier / mesures.length : null,
+        seuil: SEUIL_CLAVIER,
+        seuilAtteint: mesures.length ? auClavier / mesures.length >= SEUIL_CLAVIER : null,
+        partColleeMax: PART_COLLEE_MAX
+      },
+      seance: v ? {
+        date: new Date(v.debut).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+          ' à ' + new Date(v.debut).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+        code: v.code,
+        reussies: Object.keys(v.reponses).filter(function (k) { return v.reponses[k].ok; }).length,
+        total: v.questions.length,
+        terminee: !!v.terminee
+      } : null,
       stats: {
         date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }),
         duree: formaterDuree(memoire.duree),
@@ -391,8 +579,19 @@ function Parcours(config) {
     estFait: function (id) { return !!(memoire && memoire.faits[id]); },
     code: function (id) { return memoire ? memoire.codes[id] : undefined; },
     nbFaits: nbFaits,
+    nbTotal: function () { return EXOS.length; },
     noterTentative: noterTentative,
     sauverCode: sauverCode,
+    suivreSaisie: suivreSaisie,
+    exercicesReussis: function () {
+      return memoire ? EXOS.filter(function (e) { return memoire.faits[e.id]; }) : [];
+    },
+    validation: function () { return memoire ? memoire.validation : null; },
+    enregistrerValidation: function (v) {
+      if (!etudiant) return;
+      memoire.validation = v;
+      enregistrer();
+    },
     exigerEtudiant: exigerEtudiant,
     ouvrirCertificat: ouvrirCertificat
   };

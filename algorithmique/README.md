@@ -31,6 +31,8 @@ algorithmique/
     ├── verification.js    Vérification automatique (partagé avec le TD)
     ├── fiches.js          Fiches d'exercices en accordéon (partagé avec le TD)
     ├── parcours.js        Identification + certificat PDF (partagé avec le TD)
+    ├── seance.js          Validation en séance : questions chronométrées (partagé avec le TD)
+    ├── questions.js       Questions de la validation, à partir des cas de test
     ├── certificat.js      Certificat PDF (même principe que le dépôt CCJS)
     ├── certificat-logos.js Logos UM et MMI du certificat, en base64
     ├── vendor/            jsPDF (licence MIT)
@@ -51,3 +53,25 @@ une fois les 18 exercices réussis, un certificat de réussite. Un exercice ne
 compte comme réussi que s'il passe la vérification automatique. Les solutions
 de référence (`solution` dans les données) servent aux tests et ne sont pas
 affichées aux étudiant·es.
+
+## Indices de démarche et validation en séance
+
+Pour repérer un usage systématique de l'IA, le certificat contient des
+**indices** (pas une preuve) :
+
+- pour chaque exercice, la part du code **tapée au clavier** ou **collée**
+  depuis l'extérieur de la page (un copier-coller interne à la page ne compte
+  pas), le temps mis, le nombre d'essais et les sorties de la page (autre
+  onglet, autre fenêtre). Un exercice est « écrit au clavier » si moins de
+  20 % du code ajouté a été collé ; le seuil attendu est de 80 % des
+  exercices écrits au clavier (constantes en tête de `js/parcours.js`) ;
+- la **validation en séance** : en fin de parcours, en présentiel,
+  l'enseignant·e affiche un code de séance de son choix ; l'étudiant·e
+  répond à une question chronométrée (60 s) sur chaque exercice réussi. Une
+  seule tentative, et quitter la page fait échouer la question en cours. Le
+  code n'est pas vérifié par la page (il serait lisible dans le site public) :
+  il figure dans le certificat avec la date et l'heure, et c'est à
+  l'enseignant·e de le contrôler.
+
+Ces mesures restent sur le poste de l'étudiant·e ; les pages d'exercices le
+signalent dans un encadré « Ce qui est enregistré ».

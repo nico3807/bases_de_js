@@ -47,6 +47,7 @@
       <div class="session-barre">
         <span id="etudiant-nom" class="session-nom"></span>
         <button type="button" class="btn petit" id="ouvrir-certificat">📜 Certificat PDF</button>
+        <button type="button" class="btn secondary petit" id="validation-seance">🎓 Validation en séance</button>
         <button type="button" class="btn secondary petit" id="changer-etudiant">Changer d'étudiant·e</button>
       </div>
 
@@ -93,6 +94,23 @@
           mention « NON TERMINÉ ». Un exercice ne compte comme réussi que s'il
           passe la vérification automatique.
         </p>
+        <p>
+          <strong>Ce qui est enregistré</strong>, pour chaque exercice : la part du
+          code tapée au clavier ou collée depuis l'extérieur de la page (un
+          copier-coller à l'intérieur de la page ne compte pas), le temps mis,
+          le nombre d'essais et le nombre de fois où vous avez quitté la page.
+          Ces indices figurent dans votre certificat : il est attendu qu'<strong>au
+          moins 80 % des exercices soient écrits au clavier</strong>. Rien n'est
+          envoyé : tout reste sur cet ordinateur.
+        </p>
+        <p>
+          <strong>Validation en séance</strong> : en fin de parcours, en
+          présentiel, votre enseignant·e affiche un code de séance. Le bouton
+          « 🎓 Validation en séance » pose alors une question chronométrée
+          (60 secondes) sur chacun de vos exercices réussis. Une seule
+          tentative ; quitter la page fait échouer la question en cours. Le
+          résultat et le code de séance figurent dans le certificat.
+        </p>
       </div>
 
       <nav class="suite" aria-label="Navigation entre chapitres">
@@ -116,6 +134,8 @@
     <script src="js/verification.js"></script>
     <script src="js/parcours.js"></script>
     <script src="js/fiches.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/seance.js"></script>
     <script src="js/exercices.js"></script>
   </body>
 </html>

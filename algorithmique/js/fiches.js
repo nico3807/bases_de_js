@@ -82,6 +82,8 @@ var Fiches = (function () {
         onVerifier: function (code, verdict, sortie) { verifier(exo, carte, code, verdict, sortie, parcours, options); }
       });
       essai.zone.addEventListener('input', function () { parcours.sauverCode(exo.id, essai.zone.value); });
+      // Indices de démarche : part tapée / collée, temps, essais, sorties.
+      parcours.suivreSaisie(essai.zone, exo.id);
 
 
       if (parcours.estFait(exo.id)) marquer(carte);
